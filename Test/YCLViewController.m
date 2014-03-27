@@ -9,7 +9,6 @@
 #import "YCLViewController.h"
 
 @interface YCLViewController ()
-
 @end
 
 @implementation YCLViewController
@@ -18,6 +17,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+
+}
+- (IBAction)pushButton:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning
