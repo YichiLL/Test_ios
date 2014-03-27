@@ -1,7 +1,7 @@
 README
-An project for 'DSTE-TripGo'.
+An project for `DSTE-TripGo`.
 
-Trip
+	Trip
 
 
 
