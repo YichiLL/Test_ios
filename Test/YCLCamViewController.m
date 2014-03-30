@@ -15,6 +15,8 @@
 @property (nonatomic,weak) UIImage *imageToSave;
 
 @property (weak, nonatomic) IBOutlet UIButton *captureMomentButton;
+
+@property (nonatomic) BOOL viewShowed;
 @end
 
 @implementation YCLCamViewController
@@ -26,41 +28,59 @@
         // Custom initialization
     }
     return self;
+    NSLog(@"initWithNibName");
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.viewShowed=NO;
+    self.navigationController.delegate=self;
+    NSLog(@"Did set %@ as delegate" , NSStringFromClass(self.class));
+    NSLog(@"viewDidLoad");
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:NO];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.delegate = self;
-    
-    imagePickerController.showsCameraControls = NO;
-    
-    [[NSBundle mainBundle] loadNibNamed:@"SubView" owner:self options:nil];
-    self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
-    imagePickerController.cameraOverlayView = self.overlayView;
-    self.overlayView = nil;
-    
-    self.imagePickerController = imagePickerController;
-    [self presentViewController:self.imagePickerController animated:NO completion:nil];
-    self.captureMomentButton.hidden=YES;
+    NSLog(@"viewWillAppear");
+
+    if (!self.viewShowed) {
+        NSLog(@"actual show");
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = self;
+        
+        imagePickerController.showsCameraControls = NO;
+        
+        [[NSBundle mainBundle] loadNibNamed:@"SubView" owner:self options:nil];
+        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
+        imagePickerController.cameraOverlayView = self.overlayView;
+        self.overlayView = nil;
+        
+        self.imagePickerController = imagePickerController;
+        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+        self.captureMomentButton.hidden=YES;
+    }
+    self.viewShowed=NO;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [viewController viewWillAppear:animated];
 }
 
 - (IBAction)captureMoment:(id)sender {
+    self.viewShowed=YES;
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self performSegueWithIdentifier:@"capture" sender:self];
 }
 
 - (IBAction) back: (id) sender
 {
+    self.viewShowed=YES;
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self performSegueWithIdentifier:@"back" sender:self];
 }

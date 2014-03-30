@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YCLCamViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface YCLCamViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @end

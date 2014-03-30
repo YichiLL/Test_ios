@@ -25,11 +25,14 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    NSLog(@"3will appear");
     [super viewWillAppear:animated];
     
     self.navigationController.toolbarHidden = NO;
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"Capture the Moment";
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
