@@ -7,6 +7,8 @@
 //
 
 #import "YCLCamViewController.h"
+#import "YCLDocumentHandler.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface YCLCamViewController ()
 @property (nonatomic) UIImagePickerController *imagePickerController;
@@ -17,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *captureMomentButton;
 
 @property (nonatomic) BOOL viewShowed;
+
+
+@property (nonatomic,weak) UIManagedDocument *document;
 @end
 
 @implementation YCLCamViewController
@@ -44,6 +49,13 @@
 {
     [super viewWillAppear:NO];
     NSLog(@"viewWillAppear");
+    
+    if (!self.document) {
+        [[YCLDocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+            self.document = document;
+            // Do stuff with the document, set up a fetched results controller, whatever.
+        }];
+    }
 
     if (!self.viewShowed) {
         NSLog(@"actual show");
@@ -93,6 +105,39 @@
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.imageToSave = image;
+    
+//    try printing metadata
+    
+//    NSDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
+    
+    NSMutableDictionary *metadataDict = [[NSMutableDictionary  alloc]init];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.1f) {
+        NSURL* assetURL = nil;
+        if ((assetURL = [info objectForKey:UIImagePickerControllerReferenceURL])) {
+            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+            [library assetForURL:assetURL
+                     resultBlock:^(ALAsset *asset)  {
+                         NSDictionary *metadata = asset.defaultRepresentation.metadata;
+                         [metadataDict addEntriesFromDictionary:metadata];
+                     }
+                    failureBlock:^(NSError *error) {
+                    }];
+        }
+        else {
+            [metadataDict addEntriesFromDictionary: [info objectForKey:UIImagePickerControllerMediaMetadata]];
+
+        }
+    }
+    
+    if (metadataDict)
+        for(NSString *key in [metadataDict allKeys]) {
+            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+//            NSLog(@"%@",[metadataDict objectForKey:key]);
+        }
+    
+    
+    
+    
     [self finishAndUpdate];
 }
 

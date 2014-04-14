@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		533E2B2718E0C49D003A2860 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2618E0C49D003A2860 /* Images.xcassets */; };
 		533E2B2A18E0CA60003A2860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2818E0CA60003A2860 /* Main.storyboard */; };
+		534968CE18EA1E6B009010C1 /* YCLCaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */; };
+		53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */; };
+		53BBE3A518F859EB008B794E /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE3A418F859EB008B794E /* Photographer.m */; };
+		53BBE3A818F85ADC008B794E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE3A718F85ADC008B794E /* Photo.m */; };
+		53E66AC518FB8FA900B6C548 /* YCLDocumentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */; };
 		53F41CA818E0903400EFEA6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA718E0903400EFEA6A /* Foundation.framework */; };
 		53F41CAA18E0903400EFEA6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA918E0903400EFEA6A /* CoreGraphics.framework */; };
 		53F41CAC18E0903400EFEA6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CAB18E0903400EFEA6A /* UIKit.framework */; };
@@ -24,7 +29,6 @@
 		53F41CDE18E0931F00EFEA6A /* YCLCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* YCLCamViewController.m */; };
 		53F41CE018E0955C00EFEA6A /* SubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* SubView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
-		53F41D5418E0BF9200EFEA6A /* YCLCaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41D5318E0BF9200EFEA6A /* YCLCaptureMomentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,15 @@
 /* Begin PBXFileReference section */
 		533E2B2618E0C49D003A2860 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Test/Images.xcassets; sourceTree = "<group>"; };
 		533E2B2918E0CA60003A2860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Test/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		534968CC18EA1E6B009010C1 /* YCLCaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCLCaptureMomentViewController.h; sourceTree = "<group>"; };
+		534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCLCaptureMomentViewController.m; sourceTree = "<group>"; };
+		53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoMetadata.xcdatamodel; sourceTree = "<group>"; };
+		53BBE3A318F859EB008B794E /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
+		53BBE3A418F859EB008B794E /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
+		53BBE3A618F85ADC008B794E /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		53BBE3A718F85ADC008B794E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		53E66AC318FB8FA900B6C548 /* YCLDocumentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCLDocumentHandler.h; sourceTree = "<group>"; };
+		53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCLDocumentHandler.m; sourceTree = "<group>"; };
 		53F41CA418E0903400EFEA6A /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CA718E0903400EFEA6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53F41CA918E0903400EFEA6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -110,8 +123,6 @@
 		53F41D2A18E0BEFF00EFEA6A /* ny9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ny9.jpg; sourceTree = "<group>"; };
 		53F41D2B18E0BEFF00EFEA6A /* MosaicCollectionView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MosaicCollectionView.xcodeproj; sourceTree = "<group>"; };
 		53F41D2E18E0BEFF00EFEA6A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		53F41D5218E0BF9200EFEA6A /* YCLCaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCLCaptureMomentViewController.h; sourceTree = "<group>"; };
-		53F41D5318E0BF9200EFEA6A /* YCLCaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCLCaptureMomentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,11 +186,18 @@
 				533E2B2818E0CA60003A2860 /* Main.storyboard */,
 				53F41CB618E0903400EFEA6A /* YCLAppDelegate.h */,
 				53F41CB718E0903400EFEA6A /* YCLAppDelegate.m */,
-				53F41D5218E0BF9200EFEA6A /* YCLCaptureMomentViewController.h */,
-				53F41D5318E0BF9200EFEA6A /* YCLCaptureMomentViewController.m */,
 				53F41CDF18E0955C00EFEA6A /* SubView.xib */,
 				53F41CDC18E0931F00EFEA6A /* YCLCamViewController.h */,
 				53F41CDD18E0931F00EFEA6A /* YCLCamViewController.m */,
+				53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */,
+				53E66AC318FB8FA900B6C548 /* YCLDocumentHandler.h */,
+				53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */,
+				53BBE3A618F85ADC008B794E /* Photo.h */,
+				53BBE3A718F85ADC008B794E /* Photo.m */,
+				53BBE3A318F859EB008B794E /* Photographer.h */,
+				53BBE3A418F859EB008B794E /* Photographer.m */,
+				534968CC18EA1E6B009010C1 /* YCLCaptureMomentViewController.h */,
+				534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */,
 				53F41CBC18E0903400EFEA6A /* YCLViewController.h */,
 				53F41CBD18E0903400EFEA6A /* YCLViewController.m */,
 				53F41CF418E0BEFF00EFEA6A /* MosaicLayout 2 3 */,
@@ -489,9 +507,13 @@
 			files = (
 				53F41CB418E0903400EFEA6A /* main.m in Sources */,
 				53F41CDE18E0931F00EFEA6A /* YCLCamViewController.m in Sources */,
-				53F41D5418E0BF9200EFEA6A /* YCLCaptureMomentViewController.m in Sources */,
 				53F41CB818E0903400EFEA6A /* YCLAppDelegate.m in Sources */,
+				53BBE3A518F859EB008B794E /* Photographer.m in Sources */,
+				53BBE3A818F85ADC008B794E /* Photo.m in Sources */,
+				534968CE18EA1E6B009010C1 /* YCLCaptureMomentViewController.m in Sources */,
 				53F41CBE18E0903400EFEA6A /* YCLViewController.m in Sources */,
+				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
+				53E66AC518FB8FA900B6C548 /* YCLDocumentHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +747,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */,
+			);
+			currentVersion = 53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */;
+			path = PhotoMetadata.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 53F41C9C18E0903400EFEA6A /* Project object */;
 }
