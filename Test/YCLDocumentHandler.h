@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@import CoreData
+@import CoreData;
 
 typedef void (^OnDocumentReady) (UIManagedDocument *document);
 

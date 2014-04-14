@@ -8,6 +8,7 @@
 
 #import "YCLCamViewController.h"
 #import "YCLDocumentHandler.h"
+#import "Photo.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface YCLCamViewController ()
@@ -21,7 +22,8 @@
 @property (nonatomic) BOOL viewShowed;
 
 
-@property (nonatomic,weak) UIManagedDocument *document;
+@property (nonatomic,strong) UIManagedDocument *document;
+@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 @end
 
 @implementation YCLCamViewController
@@ -45,18 +47,48 @@
     NSLog(@"viewDidLoad");
 }
 
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:NO];
     NSLog(@"viewWillAppear");
     
-    if (!self.document) {
-        [[YCLDocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-            self.document = document;
-            // Do stuff with the document, set up a fetched results controller, whatever.
+    
+#pragma mark - Document
+    
+//    if (!self.document) {
+//        [[YCLDocumentHandler sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+//            self.document = document;
+//            // Do stuff with the document, set up a fetched results controller, whatever.
+//        }];
+//    }
+    
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"PhotoMetadata"];
+    self.document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [self.document saveToURL:url
+           forSaveOperation:UIDocumentSaveForCreating
+          completionHandler:^(BOOL success) {
+              if (success) {
+                  self.managedObjectContext = self.document.managedObjectContext;
+//                  [self refresh];
+              }
+          }];
+    } else if (self.document.documentState == UIDocumentStateClosed) {
+        [self.document openWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                self.managedObjectContext = self.document.managedObjectContext;
+            }
         }];
+    } else {
+        self.managedObjectContext = self.document.managedObjectContext;
     }
-
+    
+    
+    
     if (!self.viewShowed) {
         NSLog(@"actual show");
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
@@ -98,7 +130,7 @@
 }
 - (IBAction)takePicture:(id)sender {
     [self.imagePickerController takePicture];
-
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -106,9 +138,9 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.imageToSave = image;
     
-//    try printing metadata
+    //    try printing metadata
     
-//    NSDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
+    //    NSDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
     
     NSMutableDictionary *metadataDict = [[NSMutableDictionary  alloc]init];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.1f) {
@@ -125,28 +157,83 @@
         }
         else {
             [metadataDict addEntriesFromDictionary: [info objectForKey:UIImagePickerControllerMediaMetadata]];
-
+            
         }
     }
     
-    if (metadataDict)
-        for(NSString *key in [metadataDict allKeys]) {
-            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
-//            NSLog(@"%@",[metadataDict objectForKey:key]);
-        }
-    
+    if (metadataDict) {
+//        for(NSString *key in [metadataDict allKeys]) {
+//            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+//        }
+
+//        NSLog(@"%@",[[NSDate date] descriptionWithLocale: [NSLocale currentLocale ]]);
+
+        // enable this for using handler. TODO: set context for testing existance of document.
+//        self.managedObjectContext = self.document.managedObjectContext;
+
+        Photo *photoManagedObject =  [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:self.managedObjectContext];
+        
+//        photoManagedObject.takeDate=[[metadataDict valueForKey:@"Exif"]valueForKey:@"DateTimeOriginal"];
+        photoManagedObject.takeDate=[NSDate date];
+        
+        NSLog(@"Before saving: %@",photoManagedObject.takeDate);
+
+        
+        NSLog(@"%@",[[metadataDict valueForKey:@"Exif"]valueForKey:@"DateTimeOriginal"]);
+        
+        
+        // Actually we can read within the context before saving to the document.
+        [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            if (success) {
+                NSLog(@"After saving: %@",photoManagedObject.takeDate);
+            }
+            else NSLog(@"Failed to Save.");
+        }];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(contextDidSave:)
+                                                     name:NSManagedObjectContextDidSaveNotification
+                                                   object:self.managedObjectContext];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(objectsDidChange:)
+                                                     name:NSManagedObjectContextObjectsDidChangeNotification
+                                                   object:self.managedObjectContext];
+        
+        
+//        NSLog(@"Stored");
+////        NSLog([NSDate date]);
+//        NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+//        NSLog([formatter stringFromDate:[ photoManagedObject valueForKey:@"takeDate"]  ]);
+//        NSLog([formatter stringFromDate:[NSDate date]]);
+    }
+    else {
+        NSLog(@"Could not load metadata.");
+    }
     
     
     
     [self finishAndUpdate];
 }
 
+- (void)objectsDidChange:(NSNotification *)notification
+{
+    NSLog(@"NSManagedObjects did change.");
+}
+
+- (void)contextDidSave:(NSNotification *)notification
+{
+    NSLog(@"NSManagedContext did save.");
+}
+
+
 - (void)finishAndUpdate
 {
     UIImageWriteToSavedPhotosAlbum (self.imageToSave, nil, nil , nil);
     self.captureMomentButton.hidden=NO;
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
-    NSLog(@"Image Saved!");    
+    NSLog(@"Image Saved!");
 }
 
 - (void)hideWithAnimation {
@@ -165,14 +252,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

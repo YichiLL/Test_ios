@@ -2,7 +2,7 @@
 //  Photo.m
 //  Test
 //
-//  Created by Y. Liu on 4/11/14.
+//  Created by Y. Liu on 4/14/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Photo
 
-@dynamic title;
 @dynamic takeDate;
+@dynamic title;
 @dynamic whoTook;
 
 @end

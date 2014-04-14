@@ -2,7 +2,7 @@
 //  Photo.h
 //  Test
 //
-//  Created by Y. Liu on 4/11/14.
+//  Created by Y. Liu on 4/14/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Photo : NSManagedObject
 
+@property (nonatomic, retain) NSDate * takeDate;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * takeDate;
 @property (nonatomic, retain) Photographer *whoTook;
 
 @end
