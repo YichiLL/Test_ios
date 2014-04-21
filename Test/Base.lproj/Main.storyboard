@@ -4,41 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="YCLViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_9623.png" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-rO-507">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="482"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqf-TR-0ch">
-                                <rect key="frame" x="31" y="30" width="82" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dx8-Ox-Hba" kind="push" id="06G-uU-E6D"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ezw-3e-qx4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="826" y="-546"/>
-        </scene>
         <!--Cam View Controller-->
         <scene sceneID="JzH-Vb-ACx">
             <objects>
@@ -56,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="back" id="wbk-8b-Jh6"/>
+                                    <segue destination="utg-m3-aym" kind="push" identifier="back" id="LFm-ph-DiT"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-0F-E3g">
@@ -70,13 +35,12 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="yWz-Ot-Te2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnT-Pa-x0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="8"/>
+            <point key="canvasLocation" x="1092" y="-116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5y-vc-Bye">
@@ -257,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="8"/>
+            <point key="canvasLocation" x="1557" y="-116"/>
         </scene>
         <!--Custom View Controller-->
         <scene sceneID="71e-md-SqZ">
@@ -278,6 +242,9 @@
                                 <state key="normal" image="icon_camera">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="dx8-Ox-Hba" kind="push" identifier="Take Picture" id="4A9-re-REj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9N-Hf-Z5j">
                                 <rect key="frame" x="137" y="32" width="50" height="50"/>
@@ -379,7 +346,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IMG_9623.png" width="640" height="960"/>
         <image name="blue_tag_bg" width="11" height="11"/>
         <image name="gray_dot" width="2" height="2"/>
         <image name="green_tag_bg" width="11" height="11"/>
@@ -397,4 +363,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="LFm-ph-DiT"/>
+    </inferredMetricsTieBreakers>
 </document>
