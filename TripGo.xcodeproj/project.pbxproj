@@ -61,21 +61,21 @@
 		53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YCLDocumentHandler.m; path = Test/YCLDocumentHandler.m; sourceTree = "<group>"; };
 		53E66AC618FC48A800B6C548 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		53E66AC718FC48A800B6C548 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		53F41CA418E0903400EFEA6A /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F41CA418E0903400EFEA6A /* TripGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CA718E0903400EFEA6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53F41CA918E0903400EFEA6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		53F41CAB18E0903400EFEA6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		53F41CAF18E0903400EFEA6A /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
+		53F41CAF18E0903400EFEA6A /* TripGo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TripGo-Info.plist"; sourceTree = "<group>"; };
 		53F41CB118E0903400EFEA6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53F41CB318E0903400EFEA6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		53F41CB518E0903400EFEA6A /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
+		53F41CB518E0903400EFEA6A /* TripGo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TripGo-Prefix.pch"; sourceTree = "<group>"; };
 		53F41CB618E0903400EFEA6A /* YCLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLAppDelegate.h; sourceTree = "<group>"; };
 		53F41CB718E0903400EFEA6A /* YCLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLAppDelegate.m; sourceTree = "<group>"; };
 		53F41CBC18E0903400EFEA6A /* YCLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YCLViewController.h; path = Test/YCLViewController.h; sourceTree = "<group>"; };
 		53F41CBD18E0903400EFEA6A /* YCLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YCLViewController.m; path = Test/YCLViewController.m; sourceTree = "<group>"; };
-		53F41CC518E0903400EFEA6A /* TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F41CC518E0903400EFEA6A /* TripGoTripGos.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripGoTripGos.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CC618E0903400EFEA6A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		53F41CCE18E0903400EFEA6A /* TestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestTests-Info.plist"; sourceTree = "<group>"; };
+		53F41CCE18E0903400EFEA6A /* TripGoTripGos-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TripGoTripGos-Info.plist"; sourceTree = "<group>"; };
 		53F41CD018E0903400EFEA6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53F41CD218E0903400EFEA6A /* TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTests.m; sourceTree = "<group>"; };
 		53F41CDC18E0931F00EFEA6A /* YCLCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YCLCamViewController.h; path = Test/YCLCamViewController.h; sourceTree = "<group>"; };
@@ -164,8 +164,8 @@
 		53F41CA518E0903400EFEA6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				53F41CA418E0903400EFEA6A /* Test.app */,
-				53F41CC518E0903400EFEA6A /* TestTests.xctest */,
+				53F41CA418E0903400EFEA6A /* TripGo.app */,
+				53F41CC518E0903400EFEA6A /* TripGoTripGos.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,10 +199,10 @@
 			isa = PBXGroup;
 			children = (
 				53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */,
-				53F41CAF18E0903400EFEA6A /* Test-Info.plist */,
+				53F41CAF18E0903400EFEA6A /* TripGo-Info.plist */,
 				53F41CB018E0903400EFEA6A /* InfoPlist.strings */,
 				53F41CB318E0903400EFEA6A /* main.m */,
-				53F41CB518E0903400EFEA6A /* Test-Prefix.pch */,
+				53F41CB518E0903400EFEA6A /* TripGo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 		53F41CCD18E0903400EFEA6A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				53F41CCE18E0903400EFEA6A /* TestTests-Info.plist */,
+				53F41CCE18E0903400EFEA6A /* TripGoTripGos-Info.plist */,
 				53F41CCF18E0903400EFEA6A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -228,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		53F41CA318E0903400EFEA6A /* Test */ = {
+		53F41CA318E0903400EFEA6A /* TripGo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 53F41CD618E0903400EFEA6A /* Build configuration list for PBXNativeTarget "Test" */;
+			buildConfigurationList = 53F41CD618E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TripGo" */;
 			buildPhases = (
 				53F41CA018E0903400EFEA6A /* Sources */,
 				53F41CA118E0903400EFEA6A /* Frameworks */,
@@ -240,14 +240,14 @@
 			);
 			dependencies = (
 			);
-			name = Test;
+			name = TripGo;
 			productName = Test;
-			productReference = 53F41CA418E0903400EFEA6A /* Test.app */;
+			productReference = 53F41CA418E0903400EFEA6A /* TripGo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		53F41CC418E0903400EFEA6A /* TestTests */ = {
+		53F41CC418E0903400EFEA6A /* TripGoTripGos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 53F41CD918E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TestTests" */;
+			buildConfigurationList = 53F41CD918E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TripGoTripGos" */;
 			buildPhases = (
 				53F41CC118E0903400EFEA6A /* Sources */,
 				53F41CC218E0903400EFEA6A /* Frameworks */,
@@ -258,9 +258,9 @@
 			dependencies = (
 				53F41CCB18E0903400EFEA6A /* PBXTargetDependency */,
 			);
-			name = TestTests;
+			name = TripGoTripGos;
 			productName = TestTests;
-			productReference = 53F41CC518E0903400EFEA6A /* TestTests.xctest */;
+			productReference = 53F41CC518E0903400EFEA6A /* TripGoTripGos.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -278,7 +278,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 53F41C9F18E0903400EFEA6A /* Build configuration list for PBXProject "Test" */;
+			buildConfigurationList = 53F41C9F18E0903400EFEA6A /* Build configuration list for PBXProject "TripGo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -291,8 +291,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				53F41CA318E0903400EFEA6A /* Test */,
-				53F41CC418E0903400EFEA6A /* TestTests */,
+				53F41CA318E0903400EFEA6A /* TripGo */,
+				53F41CC418E0903400EFEA6A /* TripGoTripGos */,
 			);
 		};
 /* End PBXProject section */
@@ -352,7 +352,7 @@
 /* Begin PBXTargetDependency section */
 		53F41CCB18E0903400EFEA6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 53F41CA318E0903400EFEA6A /* Test */;
+			target = 53F41CA318E0903400EFEA6A /* TripGo */;
 			targetProxy = 53F41CCA18E0903400EFEA6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -462,9 +462,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
-				INFOPLIST_FILE = "Test/Test-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Test/TripGo-Prefix.pch";
+				INFOPLIST_FILE = "Test/TripGo-Info.plist";
+				PRODUCT_NAME = TripGo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -475,9 +475,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
-				INFOPLIST_FILE = "Test/Test-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Test/TripGo-Prefix.pch";
+				INFOPLIST_FILE = "Test/TripGo-Info.plist";
+				PRODUCT_NAME = TripGo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -497,8 +497,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "TestTests/TestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TestTests/TripGoTripGos-Info.plist";
+				PRODUCT_NAME = TripGoTripGos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -515,8 +515,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
-				INFOPLIST_FILE = "TestTests/TestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TestTests/TripGoTripGos-Info.plist";
+				PRODUCT_NAME = TripGoTripGos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -525,7 +525,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		53F41C9F18E0903400EFEA6A /* Build configuration list for PBXProject "Test" */ = {
+		53F41C9F18E0903400EFEA6A /* Build configuration list for PBXProject "TripGo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				53F41CD418E0903400EFEA6A /* Debug */,
@@ -534,7 +534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		53F41CD618E0903400EFEA6A /* Build configuration list for PBXNativeTarget "Test" */ = {
+		53F41CD618E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TripGo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				53F41CD718E0903400EFEA6A /* Debug */,
@@ -543,7 +543,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		53F41CD918E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TestTests" */ = {
+		53F41CD918E0903400EFEA6A /* Build configuration list for PBXNativeTarget "TripGoTripGos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				53F41CDA18E0903400EFEA6A /* Debug */,
