@@ -140,35 +140,33 @@
     
     //    try printing metadata
     
-    //    NSDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
+    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
     
-    NSMutableDictionary *metadataDict = [[NSMutableDictionary  alloc]init];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.1f) {
-        NSURL* assetURL = nil;
-        if ((assetURL = [info objectForKey:UIImagePickerControllerReferenceURL])) {
-            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-            [library assetForURL:assetURL
-                     resultBlock:^(ALAsset *asset)  {
-                         NSDictionary *metadata = asset.defaultRepresentation.metadata;
-                         [metadataDict addEntriesFromDictionary:metadata];
-                     }
-                    failureBlock:^(NSError *error) {
-                    }];
-        }
-        else {
-            [metadataDict addEntriesFromDictionary: [info objectForKey:UIImagePickerControllerMediaMetadata]];
-            
-        }
-    }
+//    NSMutableDictionary *metadataDict = [[NSMutableDictionary  alloc]init];
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.1f) {
+//        NSURL* assetURL = nil;
+//        if ((assetURL = [info objectForKey:UIImagePickerControllerReferenceURL])) {
+//            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+//            [library assetForURL:assetURL
+//                     resultBlock:^(ALAsset *asset)  {
+//                         NSDictionary *metadata = asset.defaultRepresentation.metadata;
+//                         [metadataDict addEntriesFromDictionary:metadata];
+//                     }
+//                    failureBlock:^(NSError *error) {
+//                    }];
+//        }
+//        else {
+//            [metadataDict addEntriesFromDictionary: [info objectForKey:UIImagePickerControllerMediaMetadata]];
+//            
+//        }
+//    }
     
     if (metadataDict) {
-//        for(NSString *key in [metadataDict allKeys]) {
-//            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
-//        }
+        for(NSString *key in [metadataDict allKeys]) {
+            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+        }
 
-//        NSLog(@"%@",[[NSDate date] descriptionWithLocale: [NSLocale currentLocale ]]);
-
-        // enable this for using handler. TODO: set context for testing existance of document.
+        // Enable this when using handler. TODO: set context for testing existance of document.
 //        self.managedObjectContext = self.document.managedObjectContext;
 
         Photo *photoManagedObject =  [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:self.managedObjectContext];
