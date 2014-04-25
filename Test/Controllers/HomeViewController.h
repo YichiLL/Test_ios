@@ -1,5 +1,5 @@
 //
-//  YCLCustomViewController.h
+//  CustomViewController.h
 //  Test
 //
 //  Created by Y. Liu on 4/21/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface CustomViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface HomeViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 

@@ -1,43 +1,40 @@
 //
-//  YCLCustomViewController.m
+//  CustomViewController.m
 //  Test
 //
 //  Created by Y. Liu on 4/21/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "CustomViewController.h"
+#import "HomeViewController.h"
 #import "PictureViewController.h"
 
-@interface CustomViewController ()
+@interface HomeViewController ()
 
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
-@property (strong, nonatomic) NSArray *photos;
+@property (strong, nonatomic) NSArray *photoAssets; // of ALAsset
 
 @end
 
-@implementation CustomViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation HomeViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [self loadPhotos];
 }
 
+#pragma mark - Getters
 - (ALAssetsLibrary *)assetsLibrary
 {
     if (_assetsLibrary == nil)
@@ -47,28 +44,18 @@
     return _assetsLibrary;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Picture"]) {
         PictureViewController *pvc = segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
-        ALAsset *photoAsset = [self.photos objectAtIndex:selectedIndexPath.row];
+        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
         pvc.photoAsset = photoAsset;
     }
 }
 
-
-#pragma mark - UI Collection View Data Source
 #pragma mark - Asset Loading
 
 - (void)loadPhotos
@@ -78,7 +65,6 @@
          
          if (!group)
              return;
-         
          [self loadPhotosInGroup:group];
          *stop = YES;
          
@@ -87,12 +73,12 @@
          NSLog(@"Error enumerating asset groups: %@, %@", error, error.userInfo);
          
      }];
+
 }
 
 - (void)loadPhotosInGroup:(ALAssetsGroup *)assetsGroup
 {
     __block NSMutableArray *photos = [NSMutableArray arrayWithCapacity:assetsGroup.numberOfAssets];
-    
     [assetsGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
         
         if (!result)
@@ -107,9 +93,15 @@
 
 - (void)reloadCollectionViewWithPhotos:(NSArray *)photos
 {
+    // Sort the picture so newest pictures show up first
+    self.photoAssets = [photos sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSDate *date1 = [obj1 valueForProperty:ALAssetPropertyDate];
+        NSDate *date2 = [obj2 valueForProperty:ALAssetPropertyDate];
+        return ([date1 compare:date2] == NSOrderedAscending ? NSOrderedDescending : NSOrderedAscending);
+    }];
+
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         
-        self.photos = photos;
         [self.collectionView reloadData];
         
     }];
@@ -119,14 +111,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.photos.count;
+    return self.photoAssets.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"PhotoCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    ALAsset *asset = [self.photos objectAtIndex:indexPath.row];
+    ALAsset *asset = [self.photoAssets objectAtIndex:indexPath.row];
     cell.contentView.layer.contents = (id)asset.thumbnail;
     
     return cell;

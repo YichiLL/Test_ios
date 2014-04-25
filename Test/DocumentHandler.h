@@ -1,5 +1,5 @@
 //
-//  YCLDocumentHandler.h
+//  DocumentHandler.h
 //  Test
 //
 //  Created by Y. Liu on 4/13/14.

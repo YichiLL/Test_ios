@@ -1,5 +1,5 @@
 //
-//  YCLCamViewController.m
+//  CamViewController.m
 //  Test
 //
 //  Created by Y. Liu on 3/24/14.

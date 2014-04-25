@@ -1,5 +1,5 @@
 //
-//  YCLDocumentHandler.m
+//  DocumentHandler.m
 //  Test
 //
 //  Created by Y. Liu on 4/13/14.

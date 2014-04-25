@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="1257" y="-128"/>
         </scene>
-        <!--Custom View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="71e-md-SqZ">
             <objects>
-                <viewController id="utg-m3-aym" customClass="CustomViewController" sceneMemberID="viewController">
+                <viewController id="utg-m3-aym" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xw-k9-6hZ"/>
                         <viewControllerLayoutGuide type="bottom" id="hdE-Nl-LkH"/>
