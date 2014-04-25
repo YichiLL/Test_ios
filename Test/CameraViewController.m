@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "YCLCamViewController.h"
-#import "YCLDocumentHandler.h"
+#import "CameraViewController.h"
+#import "DocumentHandler.h"
 #import "Photo.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface YCLCamViewController ()
+@interface CameraViewController ()
 @property (nonatomic) UIImagePickerController *imagePickerController;
 @property (nonatomic) IBOutlet UIView *overlayView;
 
@@ -26,7 +26,7 @@
 @property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 @end
 
-@implementation YCLCamViewController
+@implementation CameraViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -98,7 +98,7 @@
         
         imagePickerController.showsCameraControls = NO;
         
-        [[NSBundle mainBundle] loadNibNamed:@"SubView" owner:self options:nil];
+        [[NSBundle mainBundle] loadNibNamed:@"cameraView" owner:self options:nil];
         self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
         imagePickerController.cameraOverlayView = self.overlayView;
         self.overlayView = nil;

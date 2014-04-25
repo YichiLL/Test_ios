@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "YCLAppDelegate.h"
+#import "TripGoAppDelegate.h"
 
-@implementation YCLAppDelegate
+@implementation TripGoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

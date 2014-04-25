@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "YCLAppDelegate.h"
+#import "TripGoAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([YCLAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([TripGoAppDelegate class]));
     }
 }

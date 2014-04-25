@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "YCLCaptureMomentViewController.h"
+#import "CaptureMomentViewController.h"
 
-@interface YCLCaptureMomentViewController ()
+@interface CaptureMomentViewController ()
 
 @end
 
-@implementation YCLCaptureMomentViewController
+@implementation CaptureMomentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

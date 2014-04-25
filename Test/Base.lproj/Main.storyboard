@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Cam View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="JzH-Vb-ACx">
             <objects>
-                <viewController id="dx8-Ox-Hba" customClass="YCLCamViewController" sceneMemberID="viewController">
+                <viewController id="dx8-Ox-Hba" customClass="CameraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EDY-2e-bMn"/>
                         <viewControllerLayoutGuide type="bottom" id="h6T-kr-Nlh"/>
@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnT-Pa-x0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="-116"/>
+            <point key="canvasLocation" x="780" y="-128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5y-vc-Bye">
@@ -62,12 +62,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpG-Sk-yX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="691"/>
+            <point key="canvasLocation" x="309" y="673"/>
         </scene>
         <!--Capture Moment View Controller - Moments-->
         <scene sceneID="gra-YI-36G">
             <objects>
-                <viewController title="Moments" id="s0M-5o-BTF" customClass="YCLCaptureMomentViewController" sceneMemberID="viewController">
+                <viewController title="Moments" id="s0M-5o-BTF" customClass="CaptureMomentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BvW-s7-J3Z"/>
                         <viewControllerLayoutGuide type="bottom" id="Si7-y4-ZK6"/>
@@ -221,12 +221,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="-116"/>
+            <point key="canvasLocation" x="1257" y="-128"/>
         </scene>
         <!--Custom View Controller-->
         <scene sceneID="71e-md-SqZ">
             <objects>
-                <viewController id="utg-m3-aym" customClass="YCLCustomViewController" sceneMemberID="viewController">
+                <viewController id="utg-m3-aym" customClass="CustomViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xw-k9-6hZ"/>
                         <viewControllerLayoutGuide type="bottom" id="hdE-Nl-LkH"/>

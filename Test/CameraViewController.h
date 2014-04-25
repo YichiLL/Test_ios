@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NSMutableDictionary+ImageMetadata.h"
 
-@interface YCLCamViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @end

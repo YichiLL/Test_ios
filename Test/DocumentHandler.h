@@ -12,11 +12,11 @@
 typedef void (^OnDocumentReady) (UIManagedDocument *document);
 
 
-@interface YCLDocumentHandler : NSObject
+@interface DocumentHandler : NSObject
 
 @property (strong, nonatomic) UIManagedDocument *document;
 
-+ (YCLDocumentHandler *)sharedDocumentHandler;
++ (DocumentHandler *)sharedDocumentHandler;
 - (void)performWithDocument:(OnDocumentReady)onDocumentReady;
 
 @end

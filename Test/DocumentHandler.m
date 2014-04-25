@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "YCLDocumentHandler.h"
+#import "DocumentHandler.h"
 
 
 
-@interface YCLDocumentHandler ()
+@interface DocumentHandler ()
 - (void)objectsDidChange:(NSNotification *)notification;
 - (void)contextDidSave:(NSNotification *)notification;
 @end;
 
-@implementation YCLDocumentHandler
+@implementation DocumentHandler
 
 @synthesize document = _document;
 
-static YCLDocumentHandler *_sharedInstance;
+static DocumentHandler *_sharedInstance;
 
-+ (YCLDocumentHandler *)sharedDocumentHandler
++ (DocumentHandler *)sharedDocumentHandler
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{

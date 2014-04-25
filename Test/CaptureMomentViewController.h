@@ -1,5 +1,5 @@
 //
-//  YCLViewController.h
+//  YCLCaptureMomentViewController.h
 //  Test
 //
 //  Created by Y. Liu on 3/24/14.
@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YCLViewController : UIViewController 
+@interface CaptureMomentViewController : UIViewController
+
 @end

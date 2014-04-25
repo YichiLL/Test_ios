@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
-#import "YCLCustomViewController.h"
+#import "CustomViewController.h"
 #import "PictureViewController.h"
 
-@interface YCLCustomViewController ()
+@interface CustomViewController ()
 
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) NSArray *photos;
 
 @end
 
-@implementation YCLCustomViewController
+@implementation CustomViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
