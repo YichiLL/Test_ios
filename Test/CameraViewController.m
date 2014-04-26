@@ -130,7 +130,6 @@
 }
 - (IBAction)takePicture:(id)sender {
     [self.imagePickerController takePicture];
-    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -160,24 +159,21 @@
 //            
 //        }
 //    }
-    
+
     if (metadataDict) {
+        NSLog(@"Below is everything in the metadata");
         for(NSString *key in [metadataDict allKeys]) {
             NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
         }
+        NSLog(@"END Below is everything in the metadata");
 
         // Enable this when using handler. TODO: set context for testing existance of document.
 //        self.managedObjectContext = self.document.managedObjectContext;
 
         Photo *photoManagedObject =  [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:self.managedObjectContext];
-        
-//        photoManagedObject.takeDate=[[metadataDict valueForKey:@"Exif"]valueForKey:@"DateTimeOriginal"];
+        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
         photoManagedObject.takeDate=[NSDate date];
-        
         NSLog(@"Before saving: %@",photoManagedObject.takeDate);
-
-        
-        NSLog(@"%@",[[metadataDict valueForKey:@"Exif"]valueForKey:@"DateTimeOriginal"]);
         
         
         // Actually we can read within the context before saving to the document.
@@ -210,9 +206,15 @@
         NSLog(@"Could not load metadata.");
     }
     
-    
-    
-    [self finishAndUpdate];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
+                                 metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                          completionBlock:^(NSURL *assetURL, NSError *error) {
+                              NSLog(@"Saved Picture at assetURL: %@", assetURL);
+                          }];
+//    UIImageWriteToSavedPhotosAlbum (self.imageToSave, self, @selector(image:didFinishSavingWithError:contextInfo:) , nil);
+    self.captureMomentButton.hidden=NO;
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
 }
 
 - (void)objectsDidChange:(NSNotification *)notification
@@ -225,15 +227,6 @@
     NSLog(@"NSManagedContext did save.");
 }
 
-
-- (void)finishAndUpdate
-{
-    UIImageWriteToSavedPhotosAlbum (self.imageToSave, nil, nil , nil);
-    self.captureMomentButton.hidden=NO;
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
-    NSLog(@"Image Saved!");
-}
-
 - (void)hideWithAnimation {
     
     [UIView animateWithDuration:1.0
@@ -241,12 +234,6 @@
                         options:UIViewAnimationOptionTransitionCrossDissolve
                      animations:^{self.captureMomentButton.hidden=YES;}
                      completion:NULL];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

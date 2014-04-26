@@ -97,6 +97,10 @@
             return;
         
         [photos addObject:result];
+        if (index == 1) {
+            NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
+            NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
+        }
         
     }];
     
