@@ -31,6 +31,7 @@
 		53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* CameraViewController.m */; };
 		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
+		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		53F41CDD18E0931F00EFEA6A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController.m; path = Test/CameraViewController.m; sourceTree = "<group>"; };
 		53F41CDF18E0955C00EFEA6A /* cameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraView.xib; sourceTree = "<group>"; };
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
+		E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPictureViewController.h; path = Test/Controllers/SearchPictureViewController.h; sourceTree = "<group>"; };
+		E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPictureViewController.m; path = Test/Controllers/SearchPictureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 		530E3A3A190576CC006193E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */,
+				E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */,
 				53E66AC318FB8FA900B6C548 /* DocumentHandler.h */,
 				53E66AC418FB8FA900B6C548 /* DocumentHandler.m */,
 				534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */,
@@ -330,6 +335,7 @@
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
 				53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,
+				E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

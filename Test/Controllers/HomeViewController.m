@@ -8,8 +8,9 @@
 
 #import "HomeViewController.h"
 #import "PictureViewController.h"
+#import "SearchPictureViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UISearchBarDelegate>
 
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) NSArray *photoAssets; // of ALAsset
@@ -48,11 +49,22 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Show Picture"]) {
+    if ([segue.identifier isEqualToString:@"Show Picture"])
+    {
         PictureViewController *pvc = segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
         ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
         pvc.photoAsset = photoAsset;
+    } else if ([segue.identifier isEqualToString:@"Show Search Result"])
+    {
+        UISearchBar *searchBar = nil;
+        if ([sender isKindOfClass:[UISearchBar class]]) {
+            searchBar = (UISearchBar *) sender;
+        }
+        if (searchBar) {
+            SearchPictureViewController *dvc = segue.destinationViewController;
+            dvc.searchTerm = searchBar.text;
+        }
     }
 }
 
@@ -124,5 +136,30 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView = nil;
+
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader])
+    {
+        static NSString *cellIdentifier = @"Header with Search";
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    }
+
+    return reusableView;
+
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self performSegueWithIdentifier:@"Show Search Result" sender:searchBar];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
 
 @end
