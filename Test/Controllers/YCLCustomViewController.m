@@ -63,6 +63,7 @@
         PictureViewController *pvc = segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
         ALAsset *photoAsset = [self.photos objectAtIndex:selectedIndexPath.row];
+        
         pvc.photoAsset = photoAsset;
     }
 }
