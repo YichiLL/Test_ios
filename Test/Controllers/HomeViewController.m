@@ -117,7 +117,8 @@
     {
         PictureViewController *pvc = segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
-        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
+//        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
+        ALAsset *photoAsset = [self.photosFromDatabase objectAtIndex:selectedIndexPath.row];
         pvc.photoAsset = photoAsset;
     } else if ([segue.identifier isEqualToString:@"Show Search Result"])
     {
