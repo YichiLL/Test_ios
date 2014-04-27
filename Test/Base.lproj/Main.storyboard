@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Cam View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="JzH-Vb-ACx">
             <objects>
-                <viewController id="dx8-Ox-Hba" customClass="YCLCamViewController" sceneMemberID="viewController">
+                <viewController id="dx8-Ox-Hba" customClass="CameraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EDY-2e-bMn"/>
                         <viewControllerLayoutGuide type="bottom" id="h6T-kr-Nlh"/>
@@ -20,9 +20,6 @@
                                 <rect key="frame" x="110" y="242" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="utg-m3-aym" kind="push" identifier="back" id="LFm-ph-DiT"/>
-                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-0F-E3g">
                                 <rect key="frame" x="71" y="305" width="112" height="30"/>
@@ -40,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnT-Pa-x0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="-116"/>
+            <point key="canvasLocation" x="1366" y="-90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5y-vc-Bye">
@@ -62,12 +59,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpG-Sk-yX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="691"/>
+            <point key="canvasLocation" x="293" y="609"/>
         </scene>
         <!--Capture Moment View Controller - Moments-->
         <scene sceneID="gra-YI-36G">
             <objects>
-                <viewController title="Moments" id="s0M-5o-BTF" customClass="YCLCaptureMomentViewController" sceneMemberID="viewController">
+                <viewController title="Moments" id="s0M-5o-BTF" customClass="CaptureMomentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BvW-s7-J3Z"/>
                         <viewControllerLayoutGuide type="bottom" id="Si7-y4-ZK6"/>
@@ -221,12 +218,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="-116"/>
+            <point key="canvasLocation" x="1864" y="-90"/>
         </scene>
-        <!--Custom View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="71e-md-SqZ">
             <objects>
-                <viewController id="utg-m3-aym" customClass="YCLCustomViewController" sceneMemberID="viewController">
+                <viewController id="utg-m3-aym" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xw-k9-6hZ"/>
                         <viewControllerLayoutGuide type="bottom" id="hdE-Nl-LkH"/>
@@ -261,18 +258,18 @@
                                 </state>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bzS-5O-g5a">
-                                <rect key="frame" x="0.0" y="98" width="320" height="470"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="2" id="rUc-J2-ewp">
                                     <size key="itemSize" width="75" height="75"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="wMi-A5-V0m">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                        <rect key="frame" x="0.0" y="50" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -284,6 +281,20 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header with Search" id="Et4-zD-IqF">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7q-mG-8hq">
+                                            <rect key="frame" x="0.0" y="3" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="utg-m3-aym" id="qfL-pi-hlP"/>
+                                            </connections>
+                                        </searchBar>
+                                    </subviews>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960791349411011" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -291,11 +302,47 @@
                     <navigationItem key="navigationItem" id="yZM-5Y-9pg"/>
                     <connections>
                         <outlet property="collectionView" destination="bzS-5O-g5a" id="8KR-nm-pNd"/>
+                        <segue destination="xSJ-Ue-fSZ" kind="push" identifier="Show Search Result" id="VuQ-ri-ztg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZv-VF-yN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="673"/>
+            <point key="canvasLocation" x="738" y="609"/>
+        </scene>
+        <!--Search Picture View Controller-->
+        <scene sceneID="Ujq-AI-xtt">
+            <objects>
+                <viewController id="xSJ-Ue-fSZ" customClass="SearchPictureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="98B-O3-r5z"/>
+                        <viewControllerLayoutGuide type="bottom" id="S0H-P4-N2I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OOp-7I-3T8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-OS-zhQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ezZ-OS-zhQ" secondAttribute="trailing" id="3yi-wu-dDr"/>
+                            <constraint firstItem="ezZ-OS-zhQ" firstAttribute="top" secondItem="OOp-7I-3T8" secondAttribute="top" id="gLU-pY-nnz"/>
+                            <constraint firstItem="ezZ-OS-zhQ" firstAttribute="leading" secondItem="OOp-7I-3T8" secondAttribute="leading" id="juw-R2-7mp"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="XWo-Z2-rvG"/>
+                    <connections>
+                        <outlet property="searchBar" destination="ezZ-OS-zhQ" id="4Ss-r3-ILD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0bU-HK-Uoi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1366" y="1354"/>
         </scene>
         <!--Picture View Controller-->
         <scene sceneID="EtP-dj-v6P">
@@ -342,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHt-Rh-c6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="673"/>
+            <point key="canvasLocation" x="1366" y="609"/>
         </scene>
     </scenes>
     <resources>
@@ -363,7 +410,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="LFm-ph-DiT"/>
-    </inferredMetricsTieBreakers>
 </document>

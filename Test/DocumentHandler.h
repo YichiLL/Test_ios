@@ -1,5 +1,5 @@
 //
-//  YCLDocumentHandler.h
+//  DocumentHandler.h
 //  Test
 //
 //  Created by Y. Liu on 4/13/14.
@@ -12,11 +12,11 @@
 typedef void (^OnDocumentReady) (UIManagedDocument *document);
 
 
-@interface YCLDocumentHandler : NSObject
+@interface DocumentHandler : NSObject
 
 @property (strong, nonatomic) UIManagedDocument *document;
 
-+ (YCLDocumentHandler *)sharedDocumentHandler;
++ (DocumentHandler *)sharedDocumentHandler;
 - (void)performWithDocument:(OnDocumentReady)onDocumentReady;
 
 @end

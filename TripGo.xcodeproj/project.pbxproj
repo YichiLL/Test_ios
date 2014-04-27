@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		530E3A3919057672006193E4 /* YCLCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E3A3819057672006193E4 /* YCLCustomViewController.m */; };
+		530E3A3919057672006193E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E3A3819057672006193E4 /* HomeViewController.m */; };
 		530E3A3E19057F1E006193E4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */; };
 		530E3A411905851A006193E4 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E3A401905851A006193E4 /* PictureViewController.m */; };
 		533E2B2718E0C49D003A2860 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2618E0C49D003A2860 /* Images.xcassets */; };
 		533E2B2A18E0CA60003A2860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2818E0CA60003A2860 /* Main.storyboard */; };
-		534968CE18EA1E6B009010C1 /* YCLCaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */; };
+		534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */; };
 		53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */; };
-		53BBE3A518F859EB008B794E /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE3A418F859EB008B794E /* Photographer.m */; };
-		53E66AC518FB8FA900B6C548 /* YCLDocumentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */; };
-		53E66AC818FC48A800B6C548 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E66AC718FC48A800B6C548 /* Photo.m */; };
+		53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E66AC418FB8FA900B6C548 /* DocumentHandler.m */; };
 		53F41CA818E0903400EFEA6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA718E0903400EFEA6A /* Foundation.framework */; };
 		53F41CAA18E0903400EFEA6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA918E0903400EFEA6A /* CoreGraphics.framework */; };
 		53F41CAC18E0903400EFEA6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CAB18E0903400EFEA6A /* UIKit.framework */; };
 		53F41CB218E0903400EFEA6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CB018E0903400EFEA6A /* InfoPlist.strings */; };
 		53F41CB418E0903400EFEA6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CB318E0903400EFEA6A /* main.m */; };
-		53F41CB818E0903400EFEA6A /* YCLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CB718E0903400EFEA6A /* YCLAppDelegate.m */; };
-		53F41CBE18E0903400EFEA6A /* YCLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CBD18E0903400EFEA6A /* YCLViewController.m */; };
+		53F41CB818E0903400EFEA6A /* TripGoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CB718E0903400EFEA6A /* TripGoAppDelegate.m */; };
 		53F41CC718E0903400EFEA6A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CC618E0903400EFEA6A /* XCTest.framework */; };
 		53F41CC818E0903400EFEA6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA718E0903400EFEA6A /* Foundation.framework */; };
 		53F41CC918E0903400EFEA6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CAB18E0903400EFEA6A /* UIKit.framework */; };
 		53F41CD118E0903400EFEA6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CCF18E0903400EFEA6A /* InfoPlist.strings */; };
 		53F41CD318E0903400EFEA6A /* TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CD218E0903400EFEA6A /* TestTests.m */; };
-		53F41CDE18E0931F00EFEA6A /* YCLCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* YCLCamViewController.m */; };
-		53F41CE018E0955C00EFEA6A /* SubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* SubView.xib */; };
+		53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* CameraViewController.m */; };
+		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
+		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
+		E2BF69F0190C67D50068835A /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69EF190C67D50068835A /* Photographer.m */; };
+		E2BF69F3190C67D60068835A /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F2190C67D60068835A /* Photo.m */; };
+		E2BF69F6190C69440068835A /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F5190C69440068835A /* Photo+Create.m */; };
+		E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BF69FA190C7CB90068835A /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,22 +47,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		530E3A3719057672006193E4 /* YCLCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YCLCustomViewController.h; path = Test/Controllers/YCLCustomViewController.h; sourceTree = "<group>"; };
-		530E3A3819057672006193E4 /* YCLCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YCLCustomViewController.m; path = Test/Controllers/YCLCustomViewController.m; sourceTree = "<group>"; };
+		530E3A3719057672006193E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Test/Controllers/HomeViewController.h; sourceTree = "<group>"; };
+		530E3A3819057672006193E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Test/Controllers/HomeViewController.m; sourceTree = "<group>"; };
 		530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		530E3A3F1905851A006193E4 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureViewController.h; path = Test/Controllers/PictureViewController.h; sourceTree = "<group>"; };
 		530E3A401905851A006193E4 /* PictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureViewController.m; path = Test/Controllers/PictureViewController.m; sourceTree = "<group>"; };
 		533E2B2618E0C49D003A2860 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Test/Images.xcassets; sourceTree = "<group>"; };
 		533E2B2918E0CA60003A2860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Test/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		534968CC18EA1E6B009010C1 /* YCLCaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YCLCaptureMomentViewController.h; path = Test/YCLCaptureMomentViewController.h; sourceTree = "<group>"; };
-		534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YCLCaptureMomentViewController.m; path = Test/YCLCaptureMomentViewController.m; sourceTree = "<group>"; };
+		534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureMomentViewController.h; path = Test/CaptureMomentViewController.h; sourceTree = "<group>"; };
+		534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentViewController.m; path = Test/CaptureMomentViewController.m; sourceTree = "<group>"; };
 		53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoMetadata.xcdatamodel; sourceTree = "<group>"; };
-		53BBE3A318F859EB008B794E /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
-		53BBE3A418F859EB008B794E /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
-		53E66AC318FB8FA900B6C548 /* YCLDocumentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YCLDocumentHandler.h; path = Test/YCLDocumentHandler.h; sourceTree = "<group>"; };
-		53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YCLDocumentHandler.m; path = Test/YCLDocumentHandler.m; sourceTree = "<group>"; };
-		53E66AC618FC48A800B6C548 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		53E66AC718FC48A800B6C548 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		53E66AC318FB8FA900B6C548 /* DocumentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentHandler.h; path = Test/DocumentHandler.h; sourceTree = "<group>"; };
+		53E66AC418FB8FA900B6C548 /* DocumentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentHandler.m; path = Test/DocumentHandler.m; sourceTree = "<group>"; };
 		53F41CA418E0903400EFEA6A /* TripGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CA718E0903400EFEA6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53F41CA918E0903400EFEA6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,19 +67,27 @@
 		53F41CB118E0903400EFEA6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53F41CB318E0903400EFEA6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		53F41CB518E0903400EFEA6A /* TripGo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TripGo-Prefix.pch"; sourceTree = "<group>"; };
-		53F41CB618E0903400EFEA6A /* YCLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLAppDelegate.h; sourceTree = "<group>"; };
-		53F41CB718E0903400EFEA6A /* YCLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLAppDelegate.m; sourceTree = "<group>"; };
-		53F41CBC18E0903400EFEA6A /* YCLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YCLViewController.h; path = Test/YCLViewController.h; sourceTree = "<group>"; };
-		53F41CBD18E0903400EFEA6A /* YCLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YCLViewController.m; path = Test/YCLViewController.m; sourceTree = "<group>"; };
+		53F41CB618E0903400EFEA6A /* TripGoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TripGoAppDelegate.h; sourceTree = "<group>"; };
+		53F41CB718E0903400EFEA6A /* TripGoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripGoAppDelegate.m; sourceTree = "<group>"; };
 		53F41CC518E0903400EFEA6A /* TripGoTripGos.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripGoTripGos.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CC618E0903400EFEA6A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		53F41CCE18E0903400EFEA6A /* TripGoTripGos-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TripGoTripGos-Info.plist"; sourceTree = "<group>"; };
 		53F41CD018E0903400EFEA6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53F41CD218E0903400EFEA6A /* TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTests.m; sourceTree = "<group>"; };
-		53F41CDC18E0931F00EFEA6A /* YCLCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YCLCamViewController.h; path = Test/YCLCamViewController.h; sourceTree = "<group>"; };
-		53F41CDD18E0931F00EFEA6A /* YCLCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YCLCamViewController.m; path = Test/YCLCamViewController.m; sourceTree = "<group>"; };
-		53F41CDF18E0955C00EFEA6A /* SubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubView.xib; sourceTree = "<group>"; };
+		53F41CDC18E0931F00EFEA6A /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraViewController.h; path = Test/CameraViewController.h; sourceTree = "<group>"; };
+		53F41CDD18E0931F00EFEA6A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController.m; path = Test/CameraViewController.m; sourceTree = "<group>"; };
+		53F41CDF18E0955C00EFEA6A /* cameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraView.xib; sourceTree = "<group>"; };
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
+		E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPictureViewController.h; path = Test/Controllers/SearchPictureViewController.h; sourceTree = "<group>"; };
+		E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPictureViewController.m; path = Test/Controllers/SearchPictureViewController.m; sourceTree = "<group>"; };
+		E2BF69EE190C67D50068835A /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
+		E2BF69EF190C67D50068835A /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
+		E2BF69F1190C67D60068835A /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		E2BF69F2190C67D60068835A /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		E2BF69F4190C69440068835A /* Photo+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Create.h"; path = "CoreData/Photo+Create.h"; sourceTree = "<group>"; };
+		E2BF69F5190C69440068835A /* Photo+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+Create.m"; path = "CoreData/Photo+Create.m"; sourceTree = "<group>"; };
+		E2BF69FA190C7CB90068835A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E2BF69FD190C88C20068835A /* DatabaseAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseAvailability.h; path = CoreData/DatabaseAvailability.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */,
 				530E3A3E19057F1E006193E4 /* AssetsLibrary.framework in Frameworks */,
 				53F41CAA18E0903400EFEA6A /* CoreGraphics.framework in Frameworks */,
 				53F41CAC18E0903400EFEA6A /* UIKit.framework in Frameworks */,
@@ -112,16 +119,16 @@
 		530E3A3A190576CC006193E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				53E66AC318FB8FA900B6C548 /* YCLDocumentHandler.h */,
-				53E66AC418FB8FA900B6C548 /* YCLDocumentHandler.m */,
-				534968CC18EA1E6B009010C1 /* YCLCaptureMomentViewController.h */,
-				534968CD18EA1E6B009010C1 /* YCLCaptureMomentViewController.m */,
-				53F41CBC18E0903400EFEA6A /* YCLViewController.h */,
-				53F41CBD18E0903400EFEA6A /* YCLViewController.m */,
-				53F41CDC18E0931F00EFEA6A /* YCLCamViewController.h */,
-				53F41CDD18E0931F00EFEA6A /* YCLCamViewController.m */,
-				530E3A3719057672006193E4 /* YCLCustomViewController.h */,
-				530E3A3819057672006193E4 /* YCLCustomViewController.m */,
+				E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */,
+				E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */,
+				53E66AC318FB8FA900B6C548 /* DocumentHandler.h */,
+				53E66AC418FB8FA900B6C548 /* DocumentHandler.m */,
+				534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */,
+				534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */,
+				53F41CDC18E0931F00EFEA6A /* CameraViewController.h */,
+				53F41CDD18E0931F00EFEA6A /* CameraViewController.m */,
+				530E3A3719057672006193E4 /* HomeViewController.h */,
+				530E3A3819057672006193E4 /* HomeViewController.m */,
 				530E3A3F1905851A006193E4 /* PictureViewController.h */,
 				530E3A401905851A006193E4 /* PictureViewController.m */,
 			);
@@ -132,11 +139,14 @@
 		530E3A3B190576F2006193E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				53BBE3A318F859EB008B794E /* Photographer.h */,
-				53BBE3A418F859EB008B794E /* Photographer.m */,
+				E2BF69FD190C88C20068835A /* DatabaseAvailability.h */,
 				53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */,
-				53E66AC618FC48A800B6C548 /* Photo.h */,
-				53E66AC718FC48A800B6C548 /* Photo.m */,
+				E2BF69F1190C67D60068835A /* Photo.h */,
+				E2BF69F2190C67D60068835A /* Photo.m */,
+				E2BF69EE190C67D50068835A /* Photographer.h */,
+				E2BF69EF190C67D50068835A /* Photographer.m */,
+				E2BF69F4190C69440068835A /* Photo+Create.h */,
+				E2BF69F5190C69440068835A /* Photo+Create.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -145,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				533E2B2818E0CA60003A2860 /* Main.storyboard */,
-				53F41CDF18E0955C00EFEA6A /* SubView.xib */,
+				53F41CDF18E0955C00EFEA6A /* cameraView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -173,6 +183,7 @@
 		53F41CA618E0903400EFEA6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2BF69FA190C7CB90068835A /* CoreData.framework */,
 				530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */,
 				53F41CA718E0903400EFEA6A /* Foundation.framework */,
 				53F41CA918E0903400EFEA6A /* CoreGraphics.framework */,
@@ -185,8 +196,8 @@
 		53F41CAD18E0903400EFEA6A /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				53F41CB618E0903400EFEA6A /* YCLAppDelegate.h */,
-				53F41CB718E0903400EFEA6A /* YCLAppDelegate.m */,
+				53F41CB618E0903400EFEA6A /* TripGoAppDelegate.h */,
+				53F41CB718E0903400EFEA6A /* TripGoAppDelegate.m */,
 				530E3A3C19057706006193E4 /* Views */,
 				530E3A3B190576F2006193E4 /* CoreData */,
 				530E3A3A190576CC006193E4 /* Controllers */,
@@ -269,7 +280,7 @@
 		53F41C9C18E0903400EFEA6A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = YCL;
+				CLASSPREFIX = TripGo;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Y. Liu";
 				TargetAttributes = {
@@ -302,7 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53F41CE018E0955C00EFEA6A /* SubView.xib in Resources */,
+				53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */,
 				533E2B2A18E0CA60003A2860 /* Main.storyboard in Resources */,
 				533E2B2718E0C49D003A2860 /* Images.xcassets in Resources */,
 				53F41CB218E0903400EFEA6A /* InfoPlist.strings in Resources */,
@@ -325,17 +336,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				530E3A3919057672006193E4 /* YCLCustomViewController.m in Sources */,
+				530E3A3919057672006193E4 /* HomeViewController.m in Sources */,
 				53F41CB418E0903400EFEA6A /* main.m in Sources */,
-				53F41CDE18E0931F00EFEA6A /* YCLCamViewController.m in Sources */,
-				53F41CB818E0903400EFEA6A /* YCLAppDelegate.m in Sources */,
-				53E66AC818FC48A800B6C548 /* Photo.m in Sources */,
-				53BBE3A518F859EB008B794E /* Photographer.m in Sources */,
-				534968CE18EA1E6B009010C1 /* YCLCaptureMomentViewController.m in Sources */,
-				53F41CBE18E0903400EFEA6A /* YCLViewController.m in Sources */,
+				53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */,
+				E2BF69F0190C67D50068835A /* Photographer.m in Sources */,
+				53F41CB818E0903400EFEA6A /* TripGoAppDelegate.m in Sources */,
+				534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */,
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
-				53E66AC518FB8FA900B6C548 /* YCLDocumentHandler.m in Sources */,
+				53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */,
+				E2BF69F3190C67D60068835A /* Photo.m in Sources */,
+				E2BF69F6190C69440068835A /* Photo+Create.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,
+				E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/TripGo-Prefix.pch";
 				INFOPLIST_FILE = "Test/TripGo-Info.plist";
@@ -474,6 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/TripGo-Prefix.pch";
 				INFOPLIST_FILE = "Test/TripGo-Info.plist";
