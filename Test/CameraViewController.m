@@ -29,18 +29,15 @@
 {
     [super viewDidLoad];
     self.viewShowed=NO;
-    self.navigationController.delegate=self;
-    NSLog(@"Did set %@ as delegate" , NSStringFromClass(self.class));
-    NSLog(@"viewDidLoad");
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:NO];
-    NSLog(@"viewWillAppear");
+    [super viewWillAppear:animated];
+    NSLog(@"Camera - viewWillAppear");
 
     if (!self.viewShowed) {
-        NSLog(@"actual show");
+        NSLog(@"Camera - viewWillAppear - showing imagePickerController");
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -56,13 +53,13 @@
         self.imagePickerController = imagePickerController;
         [self presentViewController:self.imagePickerController animated:YES completion:nil];
         self.captureMomentButton.hidden=YES;
+        self.viewShowed=YES;
+    } else {self.viewShowed=NO;
     }
-    self.viewShowed=NO;
 }
 
 #pragma mark - respond to button clicks
 - (IBAction)captureMoment:(id)sender {
-    self.viewShowed=YES;
     [self dismissViewControllerAnimated:NO completion:NULL];
     [self performSegueWithIdentifier:@"capture" sender:self];
 }
@@ -70,7 +67,6 @@
 - (IBAction)back:(id)sender
 {
     [self saveDocument];
-    self.viewShowed=YES;
     [self dismissViewControllerAnimated:NO completion:NULL];
     [self.navigationController popViewControllerAnimated:YES];
 }

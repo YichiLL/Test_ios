@@ -25,7 +25,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    NSLog(@"3will appear");
+    NSLog(@"CaptureMoment - viewWillAppear");
     [super viewWillAppear:animated];
     
     self.navigationController.toolbarHidden = NO;
