@@ -89,7 +89,6 @@
     self.imageToSave = image;
     
     //    try printing metadata
-    
     NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
     if (metadataDict) {
         NSLog(@"Below is everything in the metadata");
@@ -100,32 +99,14 @@
         NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
     }
     
-//    NSMutableDictionary *metadataDict = [[NSMutableDictionary  alloc]init];
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.1f) {
-//        NSURL* assetURL = nil;
-//        if ((assetURL = [info objectForKey:UIImagePickerControllerReferenceURL])) {
-//            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-//            [library assetForURL:assetURL
-//                     resultBlock:^(ALAsset *asset)  {
-//                         NSDictionary *metadata = asset.defaultRepresentation.metadata;
-//                         [metadataDict addEntriesFromDictionary:metadata];
-//                     }
-//                    failureBlock:^(NSError *error) {
-//                    }];
-//        }
-//        else {
-//            [metadataDict addEntriesFromDictionary: [info objectForKey:UIImagePickerControllerMediaMetadata]];
-//            
-//        }
-//    }
-    
+    // store metadata when storing to album
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [library writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
                                  metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
                           completionBlock:^(NSURL *assetURL, NSError *error) {
                               Photo *photo = [Photo photoWithAssetURL:assetURL inManagedObejctContext:self.managedObjectContext];
                               if (metadataDict) {
-                                  photo.takeDate=[NSDate date];
+                                  photo.takeDate=[self getLocalDate];
                                   NSLog(@"Take Date to be saved: %@",photo.takeDate);
                               } else {
                                   NSLog(@"Could not load metadata.");
@@ -143,6 +124,18 @@
                         options:UIViewAnimationOptionTransitionCrossDissolve
                      animations:^{self.captureMomentButton.hidden=YES;}
                      completion:NULL];
+}
+
+# pragma mark - Metadata generating
+- (NSDate *)getLocalDate {
+    NSDate* sourceDate = [NSDate date];
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    NSDate* destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
+    return destinationDate;
 }
 
 # pragma mark - Saving Document
