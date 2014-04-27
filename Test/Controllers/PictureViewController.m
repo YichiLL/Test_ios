@@ -23,15 +23,7 @@
 
 @implementation PictureViewController
 
-#pragma mark - Getters
-
-- (UIImage *)fullScreenImage
-{
-    if (!_fullScreenImage)
-        _fullScreenImage = [UIImage imageWithCGImage:self.photoAsset.defaultRepresentation.fullScreenImage];
-    
-    return _fullScreenImage;
-}
+#pragma mark - Getters/Setters
 
 - (UITapGestureRecognizer *)doubleTapGestureRecognizer
 {
@@ -44,32 +36,40 @@
     return _doubleTapGestureRecognizer;
 }
 
-#pragma mark - View Lifecycle
-
-- (void)viewWillAppear:(BOOL)animated
+- (void)setPhotoAsset:(ALAsset *)photoAsset
 {
-    
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBarHidden = FALSE;
+    _photoAsset = photoAsset;
+    ALAssetRepresentation *assetRepresentation = self.photoAsset.defaultRepresentation;
+    _fullScreenImage = [UIImage imageWithCGImage:assetRepresentation.fullResolutionImage scale:assetRepresentation.scale orientation:(UIImageOrientation)assetRepresentation.orientation];
 }
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.imageView.image = self.fullScreenImage;
+    self.scrollView.contentSize = self.imageView.bounds.size;
     [self.scrollView addGestureRecognizer:self.doubleTapGestureRecognizer];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = FALSE;
+
+    if (self.photoAsset) // if there is no picture the calculation cause NaN in a layer
+    {
+        [self resizeImageViewToFitImage];
+        [self centerImageView]; //Center Image only works in viewDidAppear, but as soon as you zoom, you can't go back to the initial view where entire image shows in the imageview
+    }
+}
+
+- (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    ALAssetRepresentation *assetRepresentation = self.photoAsset.defaultRepresentation;
-    UIImage *fullResolutionImage = [UIImage imageWithCGImage:assetRepresentation.fullResolutionImage scale:assetRepresentation.scale orientation:assetRepresentation.orientation];
-    self.imageView.image = fullResolutionImage;
-    
-    [self resizeImageViewToFitImage];
-    [self centerImageView];
+
 }
 
 - (void)didReceiveMemoryWarning
