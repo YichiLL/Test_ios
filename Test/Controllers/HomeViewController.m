@@ -46,6 +46,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSLog(@"Home - viewWillAppear");
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(respondToDataChange)
 //                                                 name:NSManagedObjectContextDidSaveNotification

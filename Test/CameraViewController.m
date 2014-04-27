@@ -37,7 +37,7 @@
     NSLog(@"Camera - viewWillAppear");
 
     if (!self.viewShowed) {
-        NSLog(@"Camera - viewWillAppear - showing imagePickerController");
+        NSLog(@"Camera - showing imagePickerController");
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -58,6 +58,14 @@
     }
 }
 
+- (void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSLog(@"Camera - viewWillDisppear");
+    // Do cleaning, saving here
+    // Be aware that this is called when imagePickerController is dismissed
+    [self saveDocument];
+}
+
 #pragma mark - respond to button clicks
 - (IBAction)captureMoment:(id)sender {
     [self dismissViewControllerAnimated:NO completion:NULL];
@@ -66,7 +74,6 @@
 
 - (IBAction)back:(id)sender
 {
-    [self saveDocument];
     [self dismissViewControllerAnimated:NO completion:NULL];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -130,8 +137,18 @@
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
 }
 
+- (void)hideWithAnimation {
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionTransitionCrossDissolve
+                     animations:^{self.captureMomentButton.hidden=YES;}
+                     completion:NULL];
+}
+
+# pragma mark - Saving Document
 - (void)saveDocument
 {
+    NSLog(@"Saving Called");
     [self.managedDocument saveToURL:self.managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
         if (success) {
             NSLog(@"After saving");
@@ -141,12 +158,6 @@
 
 }
 
-- (void)hideWithAnimation {
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationOptionTransitionCrossDissolve
-                     animations:^{self.captureMomentButton.hidden=YES;}
-                     completion:NULL];
-}
+
 
 @end
