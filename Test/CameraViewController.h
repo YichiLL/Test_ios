@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSMutableDictionary+ImageMetadata.h"
 
 @interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UIManagedDocument *managedDocument;
 
 @end

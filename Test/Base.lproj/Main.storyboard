@@ -20,9 +20,6 @@
                                 <rect key="frame" x="110" y="242" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="utg-m3-aym" kind="push" identifier="back" id="LFm-ph-DiT"/>
-                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-0F-E3g">
                                 <rect key="frame" x="71" y="305" width="112" height="30"/>
@@ -40,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnT-Pa-x0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="-128"/>
+            <point key="canvasLocation" x="1366" y="-90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5y-vc-Bye">
@@ -62,7 +59,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpG-Sk-yX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309" y="673"/>
+            <point key="canvasLocation" x="293" y="609"/>
         </scene>
         <!--Capture Moment View Controller - Moments-->
         <scene sceneID="gra-YI-36G">
@@ -221,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="-128"/>
+            <point key="canvasLocation" x="1864" y="-90"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="71e-md-SqZ">
@@ -310,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZv-VF-yN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="673"/>
+            <point key="canvasLocation" x="738" y="609"/>
         </scene>
         <!--Search Picture View Controller-->
         <scene sceneID="Ujq-AI-xtt">
@@ -345,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bU-HK-Uoi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="1358"/>
+            <point key="canvasLocation" x="1366" y="1354"/>
         </scene>
         <!--Picture View Controller-->
         <scene sceneID="EtP-dj-v6P">
@@ -392,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHt-Rh-c6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="673"/>
+            <point key="canvasLocation" x="1366" y="609"/>
         </scene>
     </scenes>
     <resources>
@@ -413,7 +410,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="iEF-XO-Uco"/>
-    </inferredMetricsTieBreakers>
 </document>

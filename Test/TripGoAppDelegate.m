@@ -7,12 +7,23 @@
 //
 
 #import "TripGoAppDelegate.h"
+#import "DatabaseAvailability.h"
+
+@interface TripGoAppDelegate()
+
+@property (nonatomic,strong) UIManagedDocument *document;
+@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+
+@end
 
 @implementation TripGoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [self initDatabase];
+    
     return YES;
 }
 							
@@ -41,6 +52,49 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - getter setter
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    _managedObjectContext = managedObjectContext;
+    
+    // let everyone who might be interested know this context is available
+    // this happens very early in the running of our application
+    // it would make NO SENSE to listen to this radio station in a View Controller that was segued to, for example
+    // (but that's okay because a segued-to View Controller would presumably be "prepared" by being given a context to work in)
+    NSDictionary *userInfo = self.managedObjectContext ? @{ DatabaseAvailabilityContext : self.managedObjectContext } : nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseAvailabilityNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+}
+
+#pragma mark - Database Preparation
+- (void)initDatabase
+{
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"TripGoDatabaseFile"];
+    UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
+    self.document = document;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [document openWithCompletionHandler:^(BOOL success) {
+            if (success) [self documentIsReady];
+            if (!success) NSLog(@"couldn’t open document at %@", url);
+        }];
+    } else {
+        [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating
+          completionHandler:^(BOOL success) {
+              if (success) [self documentIsReady];
+              if (!success) NSLog(@"couldn’t create document at %@", url);
+          }];
+    }
+}
+
+- (void) documentIsReady
+{
+    if (self.document.documentState == UIDocumentStateNormal) { // start using document
+        self.managedObjectContext = self.document.managedObjectContext;
+    }
 }
 
 @end

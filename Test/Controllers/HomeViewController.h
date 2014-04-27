@@ -12,5 +12,7 @@
 @interface HomeViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UIManagedDocument *managedDocument;
 
 @end

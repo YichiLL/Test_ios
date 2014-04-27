@@ -1,8 +1,8 @@
 //
 //  Photographer.m
-//  Test
+//  TripGo
 //
-//  Created by Y. Liu on 4/11/14.
+//  Created by Tom Hsu on 4/26/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
