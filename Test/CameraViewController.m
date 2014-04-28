@@ -111,13 +111,6 @@
                               if (YES) {
                                   photo.takeDate=[self getLocalDate];
                                   self.photo = photo;
-
-                                  //TODO actual user input is needed. Below just some random tags
-                                  NSArray *tagChoice = @[@"Happy", @"Fun"];
-                                  NSArray *weatherChoice = @[@"cloudy", @"sunny"];
-
-                                  self.photo.weather = weatherChoice[arc4random_uniform(2)];
-                                  self.photo.tag = tagChoice[arc4random_uniform(2)];
                                   
                                   // TODO move following two lines out of the block; instead, pass photo to another class, whose instance will be
                                   // hold strongly by all VCs saving on the same photo. Or creat a unique key for each Photo, so don't have to wait Photo is
@@ -129,8 +122,7 @@
                                   NSLog(@"Could not load metadata.");
                               }
                               NSLog(@"Saved Picture at assetURL: %@", assetURL);
-                              NSLog(@"weather: %@, tag: %@",photo.weather,photo.tag);
-                              
+
                               
                           }];
 

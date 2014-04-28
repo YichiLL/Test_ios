@@ -12,5 +12,6 @@
 @interface PictureViewController : UIViewController
 
 @property (strong, nonatomic) ALAsset *photoAsset;
+@property (strong, nonatomic) NSString *tag;
 
 @end

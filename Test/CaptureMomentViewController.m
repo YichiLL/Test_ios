@@ -14,6 +14,8 @@
 
 @implementation CaptureMomentViewController
 
+#pragma mark - Life cycle
+
 - (void) viewWillAppear:(BOOL)animated
 {
     NSLog(@"CaptureMoment - viewWillAppear");
@@ -39,6 +41,17 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Reading tags
+
+- (IBAction)happyButtonPressed:(id)sender {
+    self.photo.tag=@"Happy";
+}
+- (IBAction)funButtonPressed:(id)sender {
+    self.photo.tag=@"Fun";
+}
+
+#pragma mark - Going back actions
+
 - (IBAction)cancelButton:(id)sender
 {
     [self goBackToCamera];
@@ -53,6 +66,8 @@
     [[self.navigationController popViewControllerAnimated:YES] viewWillAppear:YES];
 }
 
+#pragma mark - Saving & memory
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -65,11 +80,10 @@
 - (void)persistChanges
 {
     //TODO actual user input is needed. Below just some random tags
-    NSArray *tagChoice = @[@"Happy", @"Fun"];
     NSArray *weatherChoice = @[@"cloudy", @"sunny"];
-    
     self.photo.weather = weatherChoice[arc4random_uniform(2)];
-    self.photo.tag = tagChoice[arc4random_uniform(2)];
+    
+    
 }
 
 /*

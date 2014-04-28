@@ -92,10 +92,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hK1-gU-iQZ">
-                                <rect key="frame" x="20" y="70" width="32" height="24"/>
+                                <rect key="frame" x="20" y="70" width="31" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
-                                <state key="normal" title="fun" backgroundImage="green_tag_bg">
+                                <state key="normal" title="Lol" backgroundImage="green_tag_bg">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -119,13 +119,16 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRz-2B-fOu">
-                                <rect key="frame" x="181" y="70" width="31" height="24"/>
+                                <rect key="frame" x="181" y="70" width="36" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
-                                <state key="normal" title="Lol" backgroundImage="purple_tag_bg">
+                                <state key="normal" title="Fun" backgroundImage="purple_tag_bg">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="funButtonPressed:" destination="s0M-5o-BTF" eventType="touchUpInside" id="vTe-DT-o9I"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="...Write down how you are feeling, #create_a_tag, #tag2, and record audio memo below..." translatesAutoresizingMaskIntoConstraints="NO" id="SuP-fW-ez5">
                                 <rect key="frame" x="20" y="122" width="280" height="67"/>
@@ -135,13 +138,16 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-RV-Q0e">
-                                <rect key="frame" x="20" y="38" width="49" height="24"/>
+                                <rect key="frame" x="20" y="38" width="55" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
-                                <state key="normal" title="friend" backgroundImage="blue_tag_bg">
+                                <state key="normal" title="Happy" backgroundImage="blue_tag_bg">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="happyButtonPressed:" destination="s0M-5o-BTF" eventType="touchUpInside" id="dOz-S0-pfc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d67-di-DQp">
                                 <rect key="frame" x="20" y="9" width="36" height="21"/>
@@ -412,6 +418,7 @@
                     <connections>
                         <outlet property="imageView" destination="Uqt-P8-YPV" id="kRt-ZE-amP"/>
                         <outlet property="scrollView" destination="eLQ-BI-QVY" id="xDE-kb-pNl"/>
+                        <outlet property="tagTextField" destination="rc5-C4-fl3" id="iK8-Lg-uab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHt-Rh-c6B" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) UIImage *fullScreenImage;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 
 @end
 
@@ -49,6 +50,7 @@
 {
     [super viewDidLoad];
     self.imageView.image = self.fullScreenImage;
+    self.tagTextField.text=self.tag;
     self.scrollView.contentSize = self.imageView.bounds.size;
     [self.scrollView addGestureRecognizer:self.doubleTapGestureRecognizer];
 }

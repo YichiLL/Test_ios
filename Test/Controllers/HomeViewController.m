@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSArray *photoAssets; // of ALAsset
 @property (strong, nonatomic) NSMutableArray *fixedAssets; // of ALAsset
 @property (strong, nonatomic) NSMutableArray *photosFromDatabase; // of ALAsset
-
+@property (strong, nonatomic) NSMutableArray *tagsFromDatabase;
 @end
 
 @implementation HomeViewController
@@ -102,6 +102,15 @@
     return _photosFromDatabase;
 }
 
+- (NSMutableArray *)tagsFromDatabase
+{
+    if (!_tagsFromDatabase)
+    {
+        _tagsFromDatabase = [[NSMutableArray alloc] init];
+    }
+    return _tagsFromDatabase;
+}
+
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     _managedObjectContext = managedObjectContext;
@@ -120,6 +129,8 @@
 //        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
         ALAsset *photoAsset = [self.photosFromDatabase objectAtIndex:selectedIndexPath.row];
         pvc.photoAsset = photoAsset;
+        pvc.tag = [self.tagsFromDatabase objectAtIndex:selectedIndexPath.row];
+        
     } else if ([segue.identifier isEqualToString:@"Show Search Result"])
     {
         UISearchBar *searchBar = nil;
@@ -231,7 +242,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
         for (Photo *photo in matches)
         {
             if (photo.assetURL){
-                [self loadPhotoWithAssetURL:photo.assetURL];
+                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
             }
         }
     }
@@ -247,13 +258,24 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     return array;
 }
 
-- (void)loadPhotoWithAssetURL:(NSString *)assetURL
+- (void) loadPhotoWithTag:(NSString *)tag{
+    if (!tag) {tag=@"Null";}
+    [self.tagsFromDatabase addObject:tag];
+}
+- (void)loadPhotoWithAssetURL:(NSString *)assetURL tag:(NSString*)tag
 {
     [self.assetsLibrary assetForURL:[NSURL URLWithString:assetURL]
                         resultBlock:^(ALAsset *asset) {
                             if (asset){
                                 [self.photosFromDatabase addObject:asset];
-                                [self reorderAssets:self.photosFromDatabase];
+                                
+                                if (!tag) {
+                                    [self.tagsFromDatabase addObject:@"Null"];
+                                } else {
+                                    [self.tagsFromDatabase addObject:tag];
+                                }
+                                
+//                                [self reorderAssets:self.photosFromDatabase];
                                 [self.collectionView reloadData];
                             }
                         } failureBlock:^(NSError *error) {
@@ -314,7 +336,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
         for (Photo *photo in matches)
         {
             if (photo.assetURL)
-                [self loadPhotoWithAssetURL:photo.assetURL];
+                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
         }
         [self.collectionView reloadData];
     }
