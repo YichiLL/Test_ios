@@ -14,25 +14,14 @@
 
 @implementation CaptureMomentViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void) viewWillAppear:(BOOL)animated
 {
     NSLog(@"CaptureMoment - viewWillAppear");
     [super viewWillAppear:animated];
-    
+
     self.navigationController.toolbarHidden = NO;
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"Capture the Moment";
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -40,6 +29,8 @@
     [super viewWillDisappear:animated];
     self.navigationController.toolbarHidden = YES;
     self.navigationController.navigationBarHidden = YES;
+    
+    [self persistChanges];
 }
 
 - (void)viewDidLoad
@@ -66,6 +57,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/*
+ Store the on screen information into the database
+ */
+- (void)persistChanges
+{
+    //TODO actual user input is needed. Below just some random tags
+    NSArray *tagChoice = @[@"Happy", @"Fun"];
+    NSArray *weatherChoice = @[@"cloudy", @"sunny"];
+    
+    self.photo.weather = weatherChoice[arc4random_uniform(2)];
+    self.photo.tag = tagChoice[arc4random_uniform(2)];
 }
 
 /*

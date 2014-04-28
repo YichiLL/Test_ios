@@ -129,6 +129,7 @@
         if (searchBar) {
             SearchPictureViewController *dvc = segue.destinationViewController;
             dvc.searchTerm = searchBar.text;
+            dvc.context = self.managedObjectContext;
         }
     } else if ([segue.identifier isEqualToString:@"Take Picture"])
     {
@@ -235,16 +236,28 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     }
 }
 
+- (NSMutableArray *)reorderAssets:(NSMutableArray *)array
+{
+    [array sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSDate *date1 = [obj1 valueForProperty:ALAssetPropertyDate];
+        NSDate *date2 = [obj2 valueForProperty:ALAssetPropertyDate];
+        return ([date1 compare:date2] == NSOrderedAscending ? NSOrderedDescending : NSOrderedAscending);
+    }];
+    return array;
+}
+
 - (void)loadPhotoWithAssetURL:(NSString *)assetURL
 {
-    [self.assetsLibrary assetForURL:[NSURL URLWithString:assetURL] resultBlock:^(ALAsset *asset) {
-        if (asset){
-            [self.photosFromDatabase addObject:asset];
-            [self.collectionView reloadData];
-        }
-    } failureBlock:^(NSError *error) {
-        NSLog(@"Error finding the picture with url: %@", assetURL);
-    }];
+    [self.assetsLibrary assetForURL:[NSURL URLWithString:assetURL]
+                        resultBlock:^(ALAsset *asset) {
+                            if (asset){
+                                [self.photosFromDatabase addObject:asset];
+                                [self reorderAssets:self.photosFromDatabase];
+                                [self.collectionView reloadData];
+                            }
+                        } failureBlock:^(NSError *error) {
+                            NSLog(@"Error finding the picture with url: %@", assetURL);
+                        }];
 }
 
 
@@ -283,16 +296,61 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
 
 }
 
+- (void)executeSearchWithText:(NSString *)text
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+    request.predicate = [NSPredicate predicateWithFormat:@"(tag CONTAINS[cd] %@) OR (weather CONTAINS[cd] %@)", text, text];
+    
+    NSError *error;
+    NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (!matches || error)
+    {
+        // handle error
+    } else
+    {
+        [self.photosFromDatabase removeAllObjects];
+        for (Photo *photo in matches)
+        {
+            if (photo.assetURL)
+                [self loadPhotoWithAssetURL:photo.assetURL];
+        }
+        [self.collectionView reloadData];
+    }
+
+}
+
 #pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+//    [self performSegueWithIdentifier:@"Show Search Result" sender:searchBar];
+//    return NO;
+    return TRUE;
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self executeSearchWithText:[searchBar text]];
     [searchBar resignFirstResponder];
-    [self performSegueWithIdentifier:@"Show Search Result" sender:searchBar];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    [self initPhotoFromDatabase];
     [searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    // Show cancel button where there is text in the bar
+    if ([searchText length])
+    {
+        searchBar.showsCancelButton = TRUE;
+    } else
+    {
+        searchBar.showsCancelButton = FALSE;
+    }
+
 }
 
 @end

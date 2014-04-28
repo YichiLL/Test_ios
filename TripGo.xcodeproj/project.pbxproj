@@ -30,8 +30,8 @@
 		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
 		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
+		E2689016190DDBE40032515E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2689015190DDBE40032515E /* Photo.m */; };
 		E2BF69F0190C67D50068835A /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69EF190C67D50068835A /* Photographer.m */; };
-		E2BF69F3190C67D60068835A /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F2190C67D60068835A /* Photo.m */; };
 		E2BF69F6190C69440068835A /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F5190C69440068835A /* Photo+Create.m */; };
 		E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BF69FA190C7CB90068835A /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +80,10 @@
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
 		E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPictureViewController.h; path = Test/Controllers/SearchPictureViewController.h; sourceTree = "<group>"; };
 		E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPictureViewController.m; path = Test/Controllers/SearchPictureViewController.m; sourceTree = "<group>"; };
+		E2689014190DDBE40032515E /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Test/Photo.h; sourceTree = "<group>"; };
+		E2689015190DDBE40032515E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Test/Photo.m; sourceTree = "<group>"; };
+		E2689017190DDBE40032515E /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photographer.h; path = Test/Photographer.h; sourceTree = "<group>"; };
+		E2689018190DDBE40032515E /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photographer.m; path = Test/Photographer.m; sourceTree = "<group>"; };
 		E2BF69EE190C67D50068835A /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
 		E2BF69EF190C67D50068835A /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
 		E2BF69F1190C67D60068835A /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
@@ -163,6 +167,10 @@
 		53F41C9B18E0903400EFEA6A = {
 			isa = PBXGroup;
 			children = (
+				E2689017190DDBE40032515E /* Photographer.h */,
+				E2689018190DDBE40032515E /* Photographer.m */,
+				E2689014190DDBE40032515E /* Photo.h */,
+				E2689015190DDBE40032515E /* Photo.m */,
 				533E2B2618E0C49D003A2860 /* Images.xcassets */,
 				53F41CAD18E0903400EFEA6A /* Test */,
 				53F41CCC18E0903400EFEA6A /* TestTests */,
@@ -340,11 +348,11 @@
 				53F41CB418E0903400EFEA6A /* main.m in Sources */,
 				53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */,
 				E2BF69F0190C67D50068835A /* Photographer.m in Sources */,
+				E2689016190DDBE40032515E /* Photo.m in Sources */,
 				53F41CB818E0903400EFEA6A /* TripGoAppDelegate.m in Sources */,
 				534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */,
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
 				53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */,
-				E2BF69F3190C67D60068835A /* Photo.m in Sources */,
 				E2BF69F6190C69440068835A /* Photo+Create.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,
 				E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */,

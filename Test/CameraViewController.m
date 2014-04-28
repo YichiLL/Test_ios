@@ -8,6 +8,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CameraViewController.h"
+#import "CaptureMomentViewController.h"
 #import "DatabaseAvailability.h"
 #import "Photo.h"
 #import "Photo+Create.h"
@@ -19,6 +20,7 @@
 @property (nonatomic,weak) UIImage *imageToSave;
 @property (weak, nonatomic) IBOutlet UIButton *captureMomentButton;
 @property (nonatomic) BOOL viewShowed;
+@property (strong, nonatomic) Photo *photo;
 
 @end
 
@@ -85,6 +87,7 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    self.photo = nil;
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.imageToSave = image;
     
@@ -107,6 +110,17 @@
                               Photo *photo = [Photo photoWithAssetURL:assetURL inManagedObejctContext:self.managedObjectContext];
                               if (metadataDict) {
                                   photo.takeDate=[self getLocalDate];
+                                  self.photo = photo;
+
+                                  //TODO actual user input is needed. Below just some random tags
+                                  NSArray *tagChoice = @[@"Happy", @"Fun"];
+                                  NSArray *weatherChoice = @[@"cloudy", @"sunny"];
+
+                                  self.photo.weather = weatherChoice[arc4random_uniform(2)];
+                                  self.photo.tag = tagChoice[arc4random_uniform(2)];
+
+                                  self.captureMomentButton.hidden=NO;
+                                  [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
                                   NSLog(@"Take Date to be saved: %@",photo.takeDate);
                               } else {
                                   NSLog(@"Could not load metadata.");
@@ -114,8 +128,7 @@
                               NSLog(@"Saved Picture at assetURL: %@", assetURL);
                           }];
 
-    self.captureMomentButton.hidden=NO;
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
+
 }
 
 - (void)hideWithAnimation {
@@ -151,6 +164,19 @@
 
 }
 
+#pragma mark - Navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"capture"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[CaptureMomentViewController class]])
+        {
+            CaptureMomentViewController *cmvc = segue.destinationViewController;
+            cmvc.photo = self.photo;
+        }
+
+    }
+}
 
 @end

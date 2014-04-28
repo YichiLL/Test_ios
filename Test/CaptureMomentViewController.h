@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Photo.h"
 
 @interface CaptureMomentViewController : UIViewController
+
+@property (strong, nonatomic) Photo* photo;
 
 @end

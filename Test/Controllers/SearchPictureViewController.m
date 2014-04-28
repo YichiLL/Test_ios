@@ -6,10 +6,13 @@
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+#import "Photo.h"
 #import "SearchPictureViewController.h"
 
-@interface SearchPictureViewController ()
+@interface SearchPictureViewController () <UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UILabel *searchStatusLabel;
 
 @end
 
@@ -44,6 +47,31 @@
     {
         _searchBar.text = _searchTerm;
     }
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *searchString = [searchBar text];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+    request.predicate = [NSPredicate predicateWithFormat:@"(tag CONTAINS[cd] %@) OR (weather CONTAINS[cd] %@)", searchString, searchString];
+    
+    NSError *error;
+    NSArray *matches = [self.context executeFetchRequest:request error:&error];
+    
+    if (!matches || error)
+    {
+        // handle error
+    } else
+    {
+        self.searchStatusLabel.text = [NSString stringWithFormat:@"Found %u picture(s)", [matches count]];
+    }
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 /*

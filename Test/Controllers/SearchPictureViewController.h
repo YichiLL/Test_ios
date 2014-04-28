@@ -11,5 +11,6 @@
 @interface SearchPictureViewController : UIViewController
 
 @property (strong, nonatomic) NSString *searchTerm;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end
