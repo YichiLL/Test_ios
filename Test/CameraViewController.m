@@ -118,7 +118,10 @@
 
                                   self.photo.weather = weatherChoice[arc4random_uniform(2)];
                                   self.photo.tag = tagChoice[arc4random_uniform(2)];
-
+                                  
+                                  // TODO move following two lines out of the block; instead, pass photo to another class, whose instance will be
+                                  // hold strongly by all VCs saving on the same photo. Or creat a unique key for each Photo, so don't have to wait Photo is
+                                  // done to pass it to the next VC. can just pass key
                                   self.captureMomentButton.hidden=NO;
                                   [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
                                   NSLog(@"Take Date to be saved: %@",photo.takeDate);
