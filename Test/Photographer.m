@@ -2,7 +2,7 @@
 //  Photographer.m
 //  TripGo
 //
-//  Created by Tom Hsu on 4/27/14.
+//  Created by Y. Liu on 4/28/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
