@@ -82,7 +82,6 @@
     //TODO actual user input is needed. Below just some random tags
     NSArray *weatherChoice = @[@"cloudy", @"sunny"];
     self.photo.weather = weatherChoice[arc4random_uniform(2)];
-    
 }
 
 /*
