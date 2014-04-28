@@ -230,8 +230,9 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     {
         for (Photo *photo in matches)
         {
-            if (photo.assetURL)
+            if (photo.assetURL){
                 [self loadPhotoWithAssetURL:photo.assetURL];
+            }
         }
     }
 }

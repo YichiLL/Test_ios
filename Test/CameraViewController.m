@@ -92,15 +92,15 @@
     self.imageToSave = image;
     
     //    try printing metadata
-    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
-    if (metadataDict) {
-        NSLog(@"Below is everything in the metadata");
-        for(NSString *key in [metadataDict allKeys]) {
-            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
-        }
-        NSLog(@"END Below is everything in the metadata");
-        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
-    }
+//    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
+//    if (metadataDict) {
+//        NSLog(@"Below is everything in the metadata");
+//        for(NSString *key in [metadataDict allKeys]) {
+//            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+//        }
+//        NSLog(@"END Below is everything in the metadata");
+//        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
+//    }
     
     // store metadata when storing to album
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -108,7 +108,7 @@
                                  metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
                           completionBlock:^(NSURL *assetURL, NSError *error) {
                               Photo *photo = [Photo photoWithAssetURL:assetURL inManagedObejctContext:self.managedObjectContext];
-                              if (metadataDict) {
+                              if (YES) {
                                   photo.takeDate=[self getLocalDate];
                                   self.photo = photo;
 
@@ -129,6 +129,9 @@
                                   NSLog(@"Could not load metadata.");
                               }
                               NSLog(@"Saved Picture at assetURL: %@", assetURL);
+                              NSLog(@"weather: %@, tag: %@",photo.weather,photo.tag);
+                              
+                              
                           }];
 
 
