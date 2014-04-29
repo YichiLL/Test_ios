@@ -87,11 +87,15 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    // Need to present new button to process the latest picture taken
+    self.captureMomentButton.hidden=YES;
+
+    // Prepare new image to be saved
     self.photo = nil;
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.imageToSave = image;
     
-    //    try printing metadata
+    // Printin metadata information. for debugging purpose
 //    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
 //    if (metadataDict) {
 //        NSLog(@"Below is everything in the metadata");
@@ -102,31 +106,26 @@
 //        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
 //    }
     
+    // Preconstruct a Photo object for capturing tags
+    self.photo = [Photo emptyPhotoInManagedObejctContext:self.managedObjectContext];
+    self.photo.takeDate=[self getLocalDate];
+
     // store metadata when storing to album
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [library writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
                                  metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
                           completionBlock:^(NSURL *assetURL, NSError *error) {
-                              Photo *photo = [Photo photoWithAssetURL:assetURL inManagedObejctContext:self.managedObjectContext];
-                              if (YES) {
-                                  photo.takeDate=[self getLocalDate];
-                                  self.photo = photo;
-                                  
-                                  // TODO move following two lines out of the block; instead, pass photo to another class, whose instance will be
-                                  // hold strongly by all VCs saving on the same photo. Or creat a unique key for each Photo, so don't have to wait Photo is
-                                  // done to pass it to the next VC. can just pass key
-                                  self.captureMomentButton.hidden=NO;
-                                  [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
-                                  NSLog(@"Take Date to be saved: %@",photo.takeDate);
+                              if (error) {
+                                  NSLog(@"Error occurred, content of NSError: %@", error);
                               } else {
-                                  NSLog(@"Could not load metadata.");
+                                  self.photo.assetURL = [assetURL absoluteString];
+                                  NSLog(@"Saved Picture at assetURL: %@", assetURL);
                               }
-                              NSLog(@"Saved Picture at assetURL: %@", assetURL);
-
-                              
                           }];
 
-
+    // Show button to capture more details about current picture
+    self.captureMomentButton.hidden=NO;
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
 }
 
 - (void)hideWithAnimation {

@@ -13,4 +13,6 @@
 + (Photo *)photoWithAssetURL:(NSURL *)assetURL
   inManagedObejctContext:(NSManagedObjectContext *)context;
 
++ (Photo *)emptyPhotoInManagedObejctContext:(NSManagedObjectContext *)context;
+
 @end

@@ -36,5 +36,11 @@
     return photo;
 }
 
++ (Photo *)emptyPhotoInManagedObejctContext:(NSManagedObjectContext *)context
+{
+    Photo *photo = nil;
+    photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+    return photo;
+}
 
 @end
