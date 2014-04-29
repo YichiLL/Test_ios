@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *captureMomentButton;
 @property (nonatomic) BOOL viewShowed;
 @property (strong, nonatomic) Photo *photo;
+@property (strong, nonatomic) NSTimer *oldTimer;
 
 @end
 
@@ -62,7 +63,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSLog(@"Camera - viewWillDisppear");
+    NSLog(@"Camera - viewWillDisappear");
     // Do cleaning, saving here
     // Be aware that this is called when imagePickerController is dismissed
     [self saveDocument];
@@ -87,8 +88,10 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    // Need to present new button to process the latest picture taken
+    // Hide old button if already present
+    // later to present new button to process the latest picture taken
     self.captureMomentButton.hidden=YES;
+    [self.oldTimer invalidate];
 
     // Prepare new image to be saved
     self.photo = nil;
@@ -111,6 +114,7 @@
     self.photo.takeDate=[self getLocalDate];
 
     // store metadata when storing to album
+    Photo *currentPhoto = self.photo;
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [library writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
                                  metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
@@ -118,14 +122,14 @@
                               if (error) {
                                   NSLog(@"Error occurred, content of NSError: %@", error);
                               } else {
-                                  self.photo.assetURL = [assetURL absoluteString];
+                                  currentPhoto.assetURL = [assetURL absoluteString];
                                   NSLog(@"Saved Picture at assetURL: %@", assetURL);
                               }
                           }];
 
     // Show button to capture more details about current picture
     self.captureMomentButton.hidden=NO;
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
+    self.oldTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
 }
 
 - (void)hideWithAnimation {

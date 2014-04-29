@@ -227,7 +227,9 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
     request.predicate = nil;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"assetURL"
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"takeDate"
+                                                              ascending:NO],
+                                [NSSortDescriptor sortDescriptorWithKey:@"assetURL"
                                                               ascending:YES
                                                                selector:@selector(localizedStandardCompare:)]];
     
@@ -361,19 +363,6 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
 {
     [self initPhotoFromDatabase];
     [searchBar resignFirstResponder];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    // Show cancel button where there is text in the bar
-    if ([searchText length])
-    {
-        searchBar.showsCancelButton = TRUE;
-    } else
-    {
-        searchBar.showsCancelButton = FALSE;
-    }
-
 }
 
 @end
