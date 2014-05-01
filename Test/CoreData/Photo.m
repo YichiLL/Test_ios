@@ -2,7 +2,7 @@
 //  Photo.m
 //  TripGo
 //
-//  Created by Tom Hsu on 4/30/14.
+//  Created by Tom Hsu on 5/1/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
@@ -14,14 +14,16 @@
 @dynamic assetURL;
 @dynamic gpsCourse;
 @dynamic gpsLatitude;
-@dynamic locationTimeStamp;
 @dynamic gpsLongitude;
 @dynamic gpsSpeed;
+@dynamic locationTimeStamp;
 @dynamic tag;
 @dynamic takeDateUTC;
-@dynamic title;
-@dynamic weather;
 @dynamic takeTimeZone;
 @dynamic timeZoneOffsetInHour;
+@dynamic title;
+@dynamic weather;
+@dynamic addressRegions;
+@dynamic addressFull;
 
 @end

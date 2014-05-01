@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="addressFull" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressRegions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="assetURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gpsCourse" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gpsLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -15,6 +17,6 @@
         <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="225"/>
+        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="255"/>
     </elements>
 </model>

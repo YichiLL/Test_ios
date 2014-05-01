@@ -180,14 +180,14 @@
             return;
         
         [photos addObject:result];
-        if (index == 200) {
-            NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
-            NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
-            [self analyzeAsset:result];
-        }
-        if (index == assetsGroup.numberOfAssets - 1) {
-            [self analyzeAsset:result];
-        }
+//        if (index == 200) {
+//            NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
+//            NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
+//            [self analyzeAsset:result];
+//        }
+//        if (index == assetsGroup.numberOfAssets - 1) {
+//            [self analyzeAsset:result];
+//        }
         
     }];
     
@@ -284,6 +284,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
                                 }
 
 //                                [self reorderAssets:self.photosFromDatabase];
+//                                [self analyzeAsset:asset];
                                 [self.collectionView reloadData];
                             }
                         } failureBlock:^(NSError *error) {

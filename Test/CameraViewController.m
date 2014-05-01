@@ -7,6 +7,7 @@
 //
 
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <AddressBookUI/AddressBookUI.h>
 #import "CameraViewController.h"
 #import "CaptureMomentViewController.h"
 #import <CoreLocation/CoreLocation.h>
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) CLLocation *lastLocation;
 @property (strong, nonatomic) CLHeading * lastHeading;
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
+@property (strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -101,6 +103,13 @@
     return _assetsLibrary;
 }
 
+- (CLGeocoder *)geocoder
+{
+    if (!_geocoder)
+        _geocoder = [[CLGeocoder alloc] init];
+    return _geocoder;
+}
+
 #pragma mark - respond to button clicks
 - (IBAction)captureMoment:(id)sender {
     [self dismissViewControllerAnimated:NO completion:NULL];
@@ -153,6 +162,20 @@
     Photo *currentPhoto = self.photo;
     CLLocation *currentLocation = self.lastLocation;
     CLHeading *currentHeading = self.lastHeading;
+    if (currentLocation) {
+        [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:
+         ^(NSArray* placemarks, NSError* error){
+             if (error) {
+                 NSLog(@"Geocoding failed with location = %@, localized description = %@", currentLocation, [error localizedDescription]);
+             } else {
+                 CLPlacemark *placeMark = [placemarks firstObject];
+                 currentPhoto.addressRegions = [NSString stringWithFormat:@"%@, %@, %@, %@, %@", placeMark.subLocality, placeMark.locality, placeMark.subAdministrativeArea, placeMark.administrativeArea, placeMark.country];
+//                 NSLog(@"Address Regions = %@", currentPhoto.addressRegions);
+                 currentPhoto.addressFull = ABCreateStringWithAddressDictionary(placeMark.addressDictionary, TRUE);
+//                 NSLog(@"Address Full = %@", currentPhoto.addressFull);
+             }
+         }];
+    }
     [metadataDict setLocation:currentLocation];
     [metadataDict setHeading:currentHeading];
     currentPhoto.gpsLongitude = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
