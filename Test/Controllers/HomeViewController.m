@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "DatabaseAvailability.h"
 #import "HomeViewController.h"
 #import "Photo.h"
@@ -179,9 +180,13 @@
             return;
         
         [photos addObject:result];
-        if (index == 0) {
+        if (index == 200) {
             NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
             NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
+            [self analyzeAsset:result];
+        }
+        if (index == assetsGroup.numberOfAssets - 1) {
+            [self analyzeAsset:result];
         }
         
     }];
@@ -227,7 +232,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
     request.predicate = nil;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"takeDate"
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"takeDateUTC"
                                                               ascending:NO],
                                 [NSSortDescriptor sortDescriptorWithKey:@"assetURL"
                                                               ascending:YES
@@ -264,19 +269,20 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     if (!tag) {tag=@"Null";}
     [self.tagsFromDatabase addObject:tag];
 }
+
 - (void)loadPhotoWithAssetURL:(NSString *)assetURL tag:(NSString*)tag
 {
     [self.assetsLibrary assetForURL:[NSURL URLWithString:assetURL]
                         resultBlock:^(ALAsset *asset) {
                             if (asset){
                                 [self.photosFromDatabase addObject:asset];
-                                
+
                                 if (!tag) {
                                     [self.tagsFromDatabase addObject:@"Null"];
                                 } else {
                                     [self.tagsFromDatabase addObject:tag];
                                 }
-                                
+
 //                                [self reorderAssets:self.photosFromDatabase];
                                 [self.collectionView reloadData];
                             }
@@ -285,6 +291,42 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
                         }];
 }
 
+- (void)analyzeAsset:(ALAsset *)asset
+{
+    NSArray *assetKeys = @[
+                           ALAssetPropertyAssetURL,
+                           ALAssetPropertyType,
+                           ALAssetPropertyLocation,
+                           ALAssetPropertyDuration,
+                           ALAssetPropertyOrientation,
+                           ALAssetPropertyDate,
+                           ALAssetPropertyRepresentations,
+                           ALAssetPropertyURLs,
+                           ];
+    NSLog(@"Below is asset properties");
+    for (NSString *key in assetKeys) {
+        if (key && [key isEqualToString:ALAssetPropertyLocation] && [asset valueForProperty:key]) {
+            CLLocation *location = (CLLocation *)[asset valueForProperty:key];
+            NSLog(@"Location = %@", location);
+            NSLog(@"Horizontal accuracy = %f", location.horizontalAccuracy);
+        } else if ([key isEqualToString:ALAssetPropertyLocation]) {
+            NSLog(@"No location object");
+        } else {
+            NSLog(@"%@ = %@", key, [asset valueForProperty:key]);
+        }
+    }
+    NSDictionary *metadataDict = asset.defaultRepresentation.metadata;
+    if (metadataDict) {
+        NSLog(@"Below is everything in the metadata");
+        for(NSString *key in [metadataDict allKeys]) {
+            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+        }
+        NSLog(@"END Below is everything in the metadata");
+        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
+    }
+
+    NSLog(@"END Below is asset properties");
+}
 
 #pragma mark - UICollectionViewDataSource
 

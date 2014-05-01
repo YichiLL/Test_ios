@@ -9,11 +9,13 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CameraViewController.h"
 #import "CaptureMomentViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "DatabaseAvailability.h"
+#import "NSMutableDictionary+ImageMetadata.h"
 #import "Photo.h"
 #import "Photo+Create.h"
 
-@interface CameraViewController ()
+@interface CameraViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic) UIImagePickerController *imagePickerController;
 @property (nonatomic) IBOutlet UIView *overlayView;
@@ -22,6 +24,10 @@
 @property (nonatomic) BOOL viewShowed;
 @property (strong, nonatomic) Photo *photo;
 @property (strong, nonatomic) NSTimer *oldTimer;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *lastLocation;
+@property (strong, nonatomic) CLHeading * lastHeading;
+@property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 
 @end
 
@@ -32,6 +38,13 @@
 {
     [super viewDidLoad];
     self.viewShowed=NO;
+
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    // Set a movement threshold for new events.
+    self.locationManager.distanceFilter = kCLDistanceFilterNone; // meters
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingHeading];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -69,6 +82,25 @@
     [self saveDocument];
 }
 
+#pragma mark - getters
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+
+    return _locationManager;
+}
+
+- (ALAssetsLibrary *)assetsLibrary
+{
+    if (_assetsLibrary == nil)
+    {
+        _assetsLibrary = [[ALAssetsLibrary alloc] init];
+    }
+    return _assetsLibrary;
+}
+
 #pragma mark - respond to button clicks
 - (IBAction)captureMoment:(id)sender {
     [self dismissViewControllerAnimated:NO completion:NULL];
@@ -98,26 +130,40 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.imageToSave = image;
     
+    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
+
     // Printin metadata information. for debugging purpose
-//    NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
-//    if (metadataDict) {
-//        NSLog(@"Below is everything in the metadata");
-//        for(NSString *key in [metadataDict allKeys]) {
-//            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
-//        }
-//        NSLog(@"END Below is everything in the metadata");
-//        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
-//    }
-    
+    if (metadataDict) {
+        NSLog(@"Below is everything in the metadata");
+        for(NSString *key in [metadataDict allKeys]) {
+            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+        }
+        NSLog(@"END Below is everything in the metadata");
+        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
+    }
+
     // Preconstruct a Photo object for capturing tags
     self.photo = [Photo emptyPhotoInManagedObejctContext:self.managedObjectContext];
-    self.photo.takeDate=[self getLocalDate];
+    NSDate *now =[NSDate date];
+    self.photo.takeDateUTC = now;
+    self.photo.timeZoneOffsetInHour = [NSNumber numberWithDouble:([[NSTimeZone localTimeZone] secondsFromGMT] / 3600.0)];
+    NSLog(@"Hours different from GMT: %@", self.photo.timeZoneOffsetInHour);
 
     // store metadata when storing to album
     Photo *currentPhoto = self.photo;
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
-                                 metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+    CLLocation *currentLocation = self.lastLocation;
+    CLHeading *currentHeading = self.lastHeading;
+    [metadataDict setLocation:currentLocation];
+    [metadataDict setHeading:currentHeading];
+    currentPhoto.gpsLongitude = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
+    currentPhoto.gpsLatitude = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
+    currentPhoto.gpsSpeed = [NSNumber numberWithDouble:currentLocation.speed];
+    currentPhoto.gpsCourse = [NSNumber numberWithDouble:currentLocation.course];
+    currentPhoto.locationTimeStamp = currentLocation.timestamp;
+    currentPhoto.takeTimeZone = [[NSTimeZone localTimeZone] name];
+    NSLog(@"TimeZone = %@", currentPhoto.takeTimeZone);
+    [self.assetsLibrary writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
+                                 metadata:metadataDict
                           completionBlock:^(NSURL *assetURL, NSError *error) {
                               if (error) {
                                   NSLog(@"Error occurred, content of NSError: %@", error);
@@ -141,8 +187,7 @@
 }
 
 # pragma mark - Metadata generating
-- (NSDate *)getLocalDate {
-    NSDate* sourceDate = [NSDate date];
+- (NSDate *)getLocalDate:(NSDate *)sourceDate {
     NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
     NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
     NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:sourceDate];
@@ -163,6 +208,19 @@
         else NSLog(@"Failed to Save.");
     }];
 
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if (locations) {
+        self.lastLocation = [locations lastObject];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    self.lastHeading = newHeading;
 }
 
 #pragma mark - Navigation
