@@ -30,6 +30,8 @@
 @property (strong, nonatomic) CLHeading * lastHeading;
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) NSURLSession *session;
+@property (strong, nonatomic) NSDictionary *data;
 
 @end
 
@@ -142,21 +144,21 @@
     NSMutableDictionary *metadataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
 
     // Printin metadata information. for debugging purpose
-    if (metadataDict) {
-        NSLog(@"Below is everything in the metadata");
-        for(NSString *key in [metadataDict allKeys]) {
-            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
-        }
-        NSLog(@"END Below is everything in the metadata");
-        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
-    }
+//    if (metadataDict) {
+//        NSLog(@"Below is everything in the metadata");
+//        for(NSString *key in [metadataDict allKeys]) {
+//            NSLog(@"%@:%@",key,[metadataDict objectForKey:key]);
+//        }
+//        NSLog(@"END Below is everything in the metadata");
+//        NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
+//    }
 
     // Preconstruct a Photo object for capturing tags
     self.photo = [Photo emptyPhotoInManagedObejctContext:self.managedObjectContext];
     NSDate *now =[NSDate date];
     self.photo.takeDateUTC = now;
     self.photo.timeZoneOffsetInHour = [NSNumber numberWithDouble:([[NSTimeZone localTimeZone] secondsFromGMT] / 3600.0)];
-    NSLog(@"Hours different from GMT: %@", self.photo.timeZoneOffsetInHour);
+//    NSLog(@"Hours different from GMT: %@", self.photo.timeZoneOffsetInHour);
 
     // store metadata when storing to album
     Photo *currentPhoto = self.photo;
@@ -184,7 +186,8 @@
     currentPhoto.gpsCourse = [NSNumber numberWithDouble:currentLocation.course];
     currentPhoto.locationTimeStamp = currentLocation.timestamp;
     currentPhoto.takeTimeZone = [[NSTimeZone localTimeZone] name];
-    NSLog(@"TimeZone = %@", currentPhoto.takeTimeZone);
+    [self populateWeatherForLocation:currentLocation withPhoto:currentPhoto];
+//    NSLog(@"TimeZone = %@", currentPhoto.takeTimeZone);
     [self.assetsLibrary writeImageToSavedPhotosAlbum:((UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]).CGImage
                                  metadata:metadataDict
                           completionBlock:^(NSURL *assetURL, NSError *error) {
@@ -259,6 +262,80 @@
         }
 
     }
+}
+
+#pragma mark - Weather API
+- (void)populateWeatherForLocation:(CLLocation *)location withPhoto:(Photo *)photo
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?lat=%F&lon=%F&units=imperial",location.coordinate.latitude, location.coordinate.longitude];
+    NSURL *url = [NSURL URLWithString:urlString];
+//    NSLog(@"Fetching: %@",url.absoluteString);
+
+    if(!self.session) {
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _session = [NSURLSession sessionWithConfiguration:config];
+    }
+
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (! error) {
+            NSError *jsonError = nil;
+            id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+            if (!jsonError) {
+//                NSLog(@"Json parsed = %@", json);
+                [self updatePhoto:photo withData:json];
+            }
+            else {
+                NSLog(@"Json cannot be parsed = %@", jsonError);
+            }
+        }
+        else {
+            NSLog(@"Error in sending request = %@", error);
+        }
+    }];
+
+    [dataTask resume];
+}
+
+#define WTHR_RESULT_WEATHERS                @"weather"
+#define WTHR_RESULT_WEATHER_DESCRIPTIONS    @"weather.description"
+#define WTHR_RESULT_WEATHER_CATEGORIES      @"weather.main"
+#define WTHR_RESULT_TEMPERATURE             @"main.temp"
+#define WTHR_RESULT_HUMIDITY                @"main.humidity"
+#define WTHR_RESULT_CLOUDS                  @"clouds.all"
+#define WTHR_RESULT_WIND_SPEED              @"wind.speed"
+#define WTHR_RESULT_LATITUDE                @"coord.lat"
+#define WTHR_RESULT_LONGITUDE               @"coord.lon"
+
+- (void)updatePhoto:(Photo *)photo withData:(NSDictionary *)data
+{
+//    id weathers = [data valueForKeyPath:WTHR_RESULT_WEATHERS];
+    id descriptions = [data valueForKeyPath:WTHR_RESULT_WEATHER_DESCRIPTIONS];
+    id categories = [data valueForKeyPath:WTHR_RESULT_WEATHER_CATEGORIES];
+    id temp = [data valueForKeyPath:WTHR_RESULT_TEMPERATURE];
+    id humidity = [data valueForKeyPath:WTHR_RESULT_HUMIDITY];
+    id clouds = [data valueForKeyPath:WTHR_RESULT_CLOUDS];
+    id wind_speed = [data valueForKeyPath:WTHR_RESULT_WIND_SPEED];
+    id latitude = [data valueForKeyPath:WTHR_RESULT_LATITUDE];
+    id longitude = [data valueForKeyPath:WTHR_RESULT_LONGITUDE];
+
+//    NSLog(@"weathers = %@", weathers);
+//    NSLog(@"descriptions = %@", [descriptions firstObject]);
+//    NSLog(@"categories = %@", [categories firstObject]);
+//    NSLog(@"temprature = %@", temp);
+//    NSLog(@"humidity = %@", humidity);
+//    NSLog(@"clouds = %@", clouds);
+//    NSLog(@"wind_speed = %@", wind_speed);
+//    NSLog(@"latitude = %@", latitude);
+//    NSLog(@"longitude = %@", longitude);
+
+    photo.weatherDescription = [descriptions firstObject];
+    photo.weatherCategory = [categories firstObject];
+    photo.weatherTemperature = temp;
+    photo.weatherHumidity = humidity;
+    photo.weatherClouds = clouds;
+    photo.weatherWindSpeed = wind_speed;
+    photo.weatherLatitude = latitude;
+    photo.weatherLongitude = longitude;
 }
 
 @end

@@ -31,8 +31,6 @@
     [super viewWillDisappear:animated];
     self.navigationController.toolbarHidden = YES;
     self.navigationController.navigationBarHidden = YES;
-    
-    [self persistChanges];
 }
 
 - (void)viewDidLoad
@@ -64,24 +62,6 @@
 - (void) goBackToCamera
 {
     [[self.navigationController popViewControllerAnimated:YES] viewWillAppear:YES];
-}
-
-#pragma mark - Saving & memory
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
- Store the on screen information into the database
- */
-- (void)persistChanges
-{
-    //TODO actual user input is needed. Below just some random tags
-    NSArray *weatherChoice = @[@"cloudy", @"sunny"];
-    self.photo.weather = weatherChoice[arc4random_uniform(2)];
 }
 
 /*

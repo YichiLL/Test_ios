@@ -251,6 +251,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
             if (photo.assetURL){
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
             }
+//            [self analyzePhoto:photo];
         }
     }
 }
@@ -327,6 +328,11 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
     }
 
     NSLog(@"END Below is asset properties");
+}
+
+- (void)analyzePhoto:(Photo *)photo
+{
+    NSLog(@"Photo = %@", photo);
 }
 
 #pragma mark - UICollectionViewDataSource

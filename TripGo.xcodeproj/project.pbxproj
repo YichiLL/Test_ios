@@ -32,7 +32,8 @@
 		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
 		E2BF69F6190C69440068835A /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F5190C69440068835A /* Photo+Create.m */; };
 		E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BF69FA190C7CB90068835A /* CoreData.framework */; };
-		E2CA366C1912D10B000977C3 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA366B1912D10B000977C3 /* Photo.m */; };
+		E2CA366F1912DDFA000977C3 /* WeatherPrototypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA366E1912DDFA000977C3 /* WeatherPrototypeViewController.m */; };
+		E2CA36781912F178000977C3 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CA36771912F178000977C3 /* Photo.m */; };
 		E2DBA99C1911A539009BCB85 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBA99B1911A539009BCB85 /* CoreLocation.framework */; };
 		E2DBA9AC1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBA9AB1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m */; };
 /* End PBXBuildFile section */
@@ -85,8 +86,10 @@
 		E2BF69F5190C69440068835A /* Photo+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+Create.m"; path = "CoreData/Photo+Create.m"; sourceTree = "<group>"; };
 		E2BF69FA190C7CB90068835A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E2BF69FD190C88C20068835A /* DatabaseAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseAvailability.h; path = CoreData/DatabaseAvailability.h; sourceTree = "<group>"; };
-		E2CA366A1912D10B000977C3 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
-		E2CA366B1912D10B000977C3 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = CoreData/Photo.m; sourceTree = "<group>"; };
+		E2CA366D1912DDFA000977C3 /* WeatherPrototypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherPrototypeViewController.h; path = Test/Controllers/WeatherPrototypeViewController.h; sourceTree = "<group>"; };
+		E2CA366E1912DDFA000977C3 /* WeatherPrototypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherPrototypeViewController.m; path = Test/Controllers/WeatherPrototypeViewController.m; sourceTree = "<group>"; };
+		E2CA36761912F178000977C3 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
+		E2CA36771912F178000977C3 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = CoreData/Photo.m; sourceTree = "<group>"; };
 		E2DBA99B1911A539009BCB85 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E2DBA9AA1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+LocationMetadata.h"; path = "Utility/NSMutableDictionary+LocationMetadata.h"; sourceTree = "<group>"; };
 		E2DBA9AB1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+LocationMetadata.m"; path = "Utility/NSMutableDictionary+LocationMetadata.m"; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 		530E3A3A190576CC006193E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E2CA366D1912DDFA000977C3 /* WeatherPrototypeViewController.h */,
+				E2CA366E1912DDFA000977C3 /* WeatherPrototypeViewController.m */,
 				E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */,
 				E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */,
 				53E66AC318FB8FA900B6C548 /* DocumentHandler.h */,
@@ -142,8 +147,8 @@
 		530E3A3B190576F2006193E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E2CA366A1912D10B000977C3 /* Photo.h */,
-				E2CA366B1912D10B000977C3 /* Photo.m */,
+				E2CA36761912F178000977C3 /* Photo.h */,
+				E2CA36771912F178000977C3 /* Photo.m */,
 				E2BF69FD190C88C20068835A /* DatabaseAvailability.h */,
 				53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */,
 				E2BF69F4190C69440068835A /* Photo+Create.h */,
@@ -348,10 +353,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2CA366C1912D10B000977C3 /* Photo.m in Sources */,
+				E2CA366F1912DDFA000977C3 /* WeatherPrototypeViewController.m in Sources */,
 				530E3A3919057672006193E4 /* HomeViewController.m in Sources */,
 				53F41CB418E0903400EFEA6A /* main.m in Sources */,
 				53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */,
+				E2CA36781912F178000977C3 /* Photo.m in Sources */,
 				53F41CB818E0903400EFEA6A /* TripGoAppDelegate.m in Sources */,
 				534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */,
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,

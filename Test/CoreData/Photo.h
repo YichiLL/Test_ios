@@ -23,8 +23,15 @@
 @property (nonatomic, retain) NSString * takeTimeZone;
 @property (nonatomic, retain) NSNumber * timeZoneOffsetInHour;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * weather;
+@property (nonatomic, retain) NSString * weatherCategory;
 @property (nonatomic, retain) NSString * addressRegions;
 @property (nonatomic, retain) NSString * addressFull;
+@property (nonatomic, retain) NSString * weatherDescription;
+@property (nonatomic, retain) NSNumber * weatherTemperature;
+@property (nonatomic, retain) NSNumber * weatherClouds;
+@property (nonatomic, retain) NSNumber * weatherWindSpeed;
+@property (nonatomic, retain) NSNumber * weatherHumidity;
+@property (nonatomic, retain) NSNumber * weatherLatitude;
+@property (nonatomic, retain) NSNumber * weatherLongitude;
 
 @end

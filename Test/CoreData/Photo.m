@@ -22,8 +22,15 @@
 @dynamic takeTimeZone;
 @dynamic timeZoneOffsetInHour;
 @dynamic title;
-@dynamic weather;
+@dynamic weatherCategory;
 @dynamic addressRegions;
 @dynamic addressFull;
+@dynamic weatherDescription;
+@dynamic weatherTemperature;
+@dynamic weatherClouds;
+@dynamic weatherWindSpeed;
+@dynamic weatherHumidity;
+@dynamic weatherLatitude;
+@dynamic weatherLongitude;
 
 @end

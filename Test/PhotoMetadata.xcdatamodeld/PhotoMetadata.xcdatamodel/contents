@@ -14,9 +14,16 @@
         <attribute name="takeTimeZone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeZoneOffsetInHour" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weatherCategory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weatherClouds" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weatherHumidity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherTemperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherWindSpeed" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="255"/>
+        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="358"/>
     </elements>
 </model>
