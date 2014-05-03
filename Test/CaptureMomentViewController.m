@@ -30,7 +30,6 @@
     NSLog(@"CaptureMoment - viewWillAppear");
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = NO;
-    self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"Capture the Moment";
 }
 
@@ -38,7 +37,6 @@
 {
     [super viewWillDisappear:animated];
     self.navigationController.toolbarHidden = YES;
-    self.navigationController.navigationBarHidden = YES;
     [self persistChanges];
 }
 
@@ -89,7 +87,7 @@
 
 - (void) goBackToCamera
 {
-    [[self.navigationController popViewControllerAnimated:YES] viewWillAppear:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITextViewDelegate

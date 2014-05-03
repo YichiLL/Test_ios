@@ -114,13 +114,13 @@
 
 #pragma mark - respond to button clicks
 - (IBAction)captureMoment:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:NULL];
+    [self.imagePickerController dismissViewControllerAnimated:NO completion:NULL];
     [self performSegueWithIdentifier:@"capture" sender:self];
 }
 
 - (IBAction)back:(id)sender
 {
-    [self dismissViewControllerAnimated:NO completion:NULL];
+    [self.imagePickerController dismissViewControllerAnimated:NO completion:NULL];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
