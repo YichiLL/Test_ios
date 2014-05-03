@@ -9,6 +9,7 @@
         <attribute name="gpsLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gpsSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="locationTimeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="takeDateUTC" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="takeTimeZone" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +25,6 @@
         <attribute name="weatherWindSpeed" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="358"/>
+        <element name="Photo" positionX="-2133" positionY="-2088" width="128" height="375"/>
     </elements>
 </model>

@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f0-5J-hhE">
-                                <rect key="frame" x="77" y="38" width="51" height="24"/>
+                                <rect key="frame" x="77" y="49" width="51" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="family" backgroundImage="blue_tag_bg">
@@ -83,7 +83,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAj-QW-DjC">
-                                <rect key="frame" x="136" y="38" width="96" height="24"/>
+                                <rect key="frame" x="136" y="49" width="96" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="do not share" backgroundImage="red_tag_bg">
@@ -92,7 +92,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hK1-gU-iQZ">
-                                <rect key="frame" x="20" y="70" width="31" height="24"/>
+                                <rect key="frame" x="20" y="81" width="31" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="Lol" backgroundImage="green_tag_bg">
@@ -101,7 +101,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXI-4B-sPk">
-                                <rect key="frame" x="60" y="70" width="53" height="24"/>
+                                <rect key="frame" x="60" y="81" width="53" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="beach" backgroundImage="green_tag_bg">
@@ -110,7 +110,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c48-uY-nbk">
-                                <rect key="frame" x="121" y="70" width="52" height="24"/>
+                                <rect key="frame" x="121" y="81" width="52" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="public" backgroundImage="blue_tag_bg">
@@ -119,7 +119,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRz-2B-fOu">
-                                <rect key="frame" x="181" y="70" width="36" height="24"/>
+                                <rect key="frame" x="181" y="81" width="36" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="Fun" backgroundImage="purple_tag_bg">
@@ -130,15 +130,18 @@
                                     <action selector="funButtonPressed:" destination="s0M-5o-BTF" eventType="touchUpInside" id="vTe-DT-o9I"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="...Write down how you are feeling, #create_a_tag, #tag2, and record audio memo below..." translatesAutoresizingMaskIntoConstraints="NO" id="SuP-fW-ez5">
-                                <rect key="frame" x="20" y="122" width="280" height="67"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write down how you are feeling, #create_a_tag, #tag2, and record audio memo below..." translatesAutoresizingMaskIntoConstraints="NO" id="SuP-fW-ez5">
+                                <rect key="frame" x="20" y="133" width="280" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="s0M-5o-BTF" id="wsy-Y9-Scy"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-RV-Q0e">
-                                <rect key="frame" x="20" y="38" width="55" height="24"/>
+                                <rect key="frame" x="20" y="49" width="55" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="3" maxX="5" maxY="3"/>
                                 <state key="normal" title="Happy" backgroundImage="blue_tag_bg">
@@ -150,57 +153,57 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d67-di-DQp">
-                                <rect key="frame" x="20" y="9" width="36" height="21"/>
+                                <rect key="frame" x="20" y="20" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG0-RL-xlf">
-                                <rect key="frame" x="20" y="102" width="46" height="21"/>
+                                <rect key="frame" x="20" y="113" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio Memo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opX-Mv-Yjt">
-                                <rect key="frame" x="20" y="197" width="98" height="21"/>
+                                <rect key="frame" x="20" y="208" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxj-OF-Rq8">
-                                <rect key="frame" x="145" y="226" width="30" height="30"/>
+                                <rect key="frame" x="145" y="237" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="record_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ry-JF-U53">
-                                <rect key="frame" x="65" y="226" width="30" height="30"/>
+                                <rect key="frame" x="65" y="237" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="stop_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-T5-U6k">
-                                <rect key="frame" x="218" y="226" width="30" height="30"/>
+                                <rect key="frame" x="223" y="237" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="play_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gray_dot" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-7d-WlC">
-                                <rect key="frame" x="20" y="29" width="280" height="1"/>
+                                <rect key="frame" x="20" y="40" width="280" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gray_dot" translatesAutoresizingMaskIntoConstraints="NO" id="GJW-7K-6FE">
-                                <rect key="frame" x="20" y="122" width="280" height="1"/>
+                                <rect key="frame" x="20" y="133" width="280" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gray_dot" translatesAutoresizingMaskIntoConstraints="NO" id="fsN-Me-AsG">
-                                <rect key="frame" x="20" y="217" width="280" height="1"/>
+                                <rect key="frame" x="20" y="228" width="280" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -221,6 +224,9 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="2bZ-Z4-gU2"/>
+                    <connections>
+                        <outlet property="notesTextView" destination="SuP-fW-ez5" id="HPL-F7-2sc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
