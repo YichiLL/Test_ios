@@ -7,6 +7,7 @@
 //
 
 #import "PictureViewController.h"
+#import "CBAutoScrollLabel.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
 @interface PictureViewController ()
@@ -16,7 +17,13 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) UIImage *fullScreenImage;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
-@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property (weak, nonatomic) IBOutlet UILabel *diaryView;
+@property (weak, nonatomic) IBOutlet UITextField *weatherTextField;
+@property (weak, nonatomic) IBOutlet CBAutoScrollLabel *tagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
 
 @end
 
@@ -49,9 +56,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tagLabel.text = @"This is where are the tags will be displayed, for example: #FTW #Sunny #Home";
+    self.tagLabel.textColor = [UIColor blueColor];
+    self.tagLabel.labelSpacing = 35; // distance between start and end labels
+    self.tagLabel.pauseInterval = 1.7; // seconds of pause before scrolling starts again
+    self.tagLabel.scrollSpeed = 30; // pixels per second
+    self.tagLabel.textAlignment = NSTextAlignmentLeft; // centers text when no auto-scrolling is applied
+    self.tagLabel.fadeLength = 12.f;
+    self.tagLabel.scrollDirection = CBAutoScrollDirectionLeft;
+    [self.tagLabel observeApplicationNotifications];
     self.imageView.image = self.fullScreenImage;
-    self.tagTextField.text=self.tag;
+    //self.tagTextField.text=self.tag;
+    self.diaryView.text = self.diary;
+    self.weatherTextField.text = self.weather;
     self.scrollView.contentSize = self.imageView.bounds.size;
+    self.locationLabel.text = self.address;
+    self.dateLabel.text = self.date;
     [self.scrollView addGestureRecognizer:self.doubleTapGestureRecognizer];
 }
 
