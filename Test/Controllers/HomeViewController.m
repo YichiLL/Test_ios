@@ -37,28 +37,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     NSLog(@"Home - viewWillAppear");
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(respondToDataChange)
-//                                                 name:NSManagedObjectContextDidSaveNotification
-//                                               object:self.managedObjectContext];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(respondToDataChange)
-//                                                 name:NSManagedObjectContextObjectsDidChangeNotification
-//                                               object:self.managedObjectContext];
-//    [self loadPhotos];
-//    [self initFixedPicture];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector(respondToDataChange)
+    //                                                 name:NSManagedObjectContextDidSaveNotification
+    //                                               object:self.managedObjectContext];
+    //
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector(respondToDataChange)
+    //                                                 name:NSManagedObjectContextObjectsDidChangeNotification
+    //                                               object:self.managedObjectContext];
+    //    [self loadPhotos];
+    //    [self initFixedPicture];
     [self initPhotoFromDatabase];
 }
 
@@ -66,8 +66,8 @@
 {
     [super viewWillDisappear:animated];
     
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:self.managedObjectContext];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:self.managedObjectContext];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
 }
 
 - (void)respondToDataChange
@@ -115,7 +115,7 @@
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     _managedObjectContext = managedObjectContext;
-//    [self initFixedPicture];
+    //    [self initFixedPicture];
     [self initPhotoFromDatabase];
 }
 
@@ -127,7 +127,7 @@
     {
         PictureViewController *pvc = segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
-//        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
+        //        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
         ALAsset *photoAsset = [self.photosFromDatabase objectAtIndex:selectedIndexPath.row];
         pvc.photoAsset = photoAsset;
         pvc.tag = [self.tagsFromDatabase objectAtIndex:selectedIndexPath.row];
@@ -168,7 +168,7 @@
          NSLog(@"Error enumerating asset groups: %@, %@", error, error.userInfo);
          
      }];
-
+    
 }
 
 - (void)loadPhotosInGroup:(ALAssetsGroup *)assetsGroup
@@ -180,14 +180,14 @@
             return;
         
         [photos addObject:result];
-//        if (index == 200) {
-//            NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
-//            NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
-//            [self analyzeAsset:result];
-//        }
-//        if (index == assetsGroup.numberOfAssets - 1) {
-//            [self analyzeAsset:result];
-//        }
+        //        if (index == 200) {
+        //            NSURL *assetURL = [result valueForProperty:ALAssetPropertyAssetURL];
+        //            NSLog(@"Asset URL is: %@", [assetURL absoluteString]);
+        //            [self analyzeAsset:result];
+        //        }
+        //        if (index == assetsGroup.numberOfAssets - 1) {
+        //            [self analyzeAsset:result];
+        //        }
         
     }];
     
@@ -202,7 +202,7 @@
         NSDate *date2 = [obj2 valueForProperty:ALAssetPropertyDate];
         return ([date1 compare:date2] == NSOrderedAscending ? NSOrderedDescending : NSOrderedAscending);
     }];
-
+    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         
         [self.collectionView reloadData];
@@ -211,7 +211,7 @@
 }
 
 /*
-Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF455264&ext=JPG
+ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF455264&ext=JPG
  */
 - (void) initFixedPicture
 {
@@ -251,7 +251,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
             if (photo.assetURL){
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
             }
-//            [self analyzePhoto:photo];
+            //            [self analyzePhoto:photo];
         }
     }
 }
@@ -277,15 +277,15 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
                         resultBlock:^(ALAsset *asset) {
                             if (asset){
                                 [self.photosFromDatabase addObject:asset];
-
+                                
                                 if (!tag) {
                                     [self.tagsFromDatabase addObject:@"Null"];
                                 } else {
                                     [self.tagsFromDatabase addObject:tag];
                                 }
-
-//                                [self reorderAssets:self.photosFromDatabase];
-//                                [self analyzeAsset:asset];
+                                
+                                //                                [self reorderAssets:self.photosFromDatabase];
+                                //                                [self analyzeAsset:asset];
                                 [self.collectionView reloadData];
                             }
                         } failureBlock:^(NSError *error) {
@@ -326,7 +326,7 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
         NSLog(@"END Below is everything in the metadata");
         NSLog(@"Retrieve DateTimeOriginal as NSString: %@", [[metadataDict objectForKey:@"{Exif}"] objectForKey:@"DateTimeOriginal"]);
     }
-
+    
     NSLog(@"END Below is asset properties");
 }
 
@@ -339,8 +339,8 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return self.photoAssets.count;
-//    return self.fixedAssets.count;
+    //    return self.photoAssets.count;
+    //    return self.fixedAssets.count;
     return self.photosFromDatabase.count;
 }
 
@@ -348,8 +348,8 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
 {
     static NSString *cellIdentifier = @"PhotoCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-//    ALAsset *asset = [self.photoAssets objectAtIndex:indexPath.row];
-//    ALAsset *asset = [self.fixedAssets objectAtIndex:indexPath.row];
+    //    ALAsset *asset = [self.photoAssets objectAtIndex:indexPath.row];
+    //    ALAsset *asset = [self.fixedAssets objectAtIndex:indexPath.row];
     ALAsset *asset = [self.photosFromDatabase objectAtIndex:indexPath.row];
     cell.contentView.layer.contents = (id)asset.thumbnail;
     
@@ -359,15 +359,15 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableView = nil;
-
+    
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
         static NSString *cellIdentifier = @"Header with Search";
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     }
-
+    
     return reusableView;
-
+    
 }
 
 - (void)executeSearchWithText:(NSString *)text
@@ -391,14 +391,14 @@ Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF
         }
         [self.collectionView reloadData];
     }
-
+    
 }
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-//    [self performSegueWithIdentifier:@"Show Search Result" sender:searchBar];
-//    return NO;
+    //    [self performSegueWithIdentifier:@"Show Search Result" sender:searchBar];
+    //    return NO;
     return TRUE;
 }
 
