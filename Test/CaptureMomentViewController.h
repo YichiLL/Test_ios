@@ -13,5 +13,6 @@
 @interface CaptureMomentViewController : UIViewController
 
 @property (strong, nonatomic) Photo* photo;
+@property (strong, nonatomic) UIManagedDocument *managedDocument;
 
 @end

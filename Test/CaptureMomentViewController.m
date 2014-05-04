@@ -131,7 +131,7 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     
     // Setup audio session
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
     
     // Define the recorder setting
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
@@ -182,6 +182,7 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     if (!self.recorder.recording){
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
         [self.player setDelegate:self];
+        
         [self.player play];
     }
 }

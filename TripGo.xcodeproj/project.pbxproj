@@ -15,7 +15,6 @@
 		533E2B2A18E0CA60003A2860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2818E0CA60003A2860 /* Main.storyboard */; };
 		534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */; };
 		53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */; };
-		53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E66AC418FB8FA900B6C548 /* DocumentHandler.m */; };
 		53F41CA818E0903400EFEA6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA718E0903400EFEA6A /* Foundation.framework */; };
 		53F41CAA18E0903400EFEA6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA918E0903400EFEA6A /* CoreGraphics.framework */; };
 		53F41CAC18E0903400EFEA6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CAB18E0903400EFEA6A /* UIKit.framework */; };
@@ -60,8 +59,6 @@
 		534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureMomentViewController.h; path = Test/CaptureMomentViewController.h; sourceTree = "<group>"; };
 		534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentViewController.m; path = Test/CaptureMomentViewController.m; sourceTree = "<group>"; };
 		53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoMetadata.xcdatamodel; sourceTree = "<group>"; };
-		53E66AC318FB8FA900B6C548 /* DocumentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentHandler.h; path = Test/DocumentHandler.h; sourceTree = "<group>"; };
-		53E66AC418FB8FA900B6C548 /* DocumentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentHandler.m; path = Test/DocumentHandler.m; sourceTree = "<group>"; };
 		53F41CA418E0903400EFEA6A /* TripGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CA718E0903400EFEA6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53F41CA918E0903400EFEA6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,8 +124,6 @@
 			children = (
 				E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */,
 				E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */,
-				53E66AC318FB8FA900B6C548 /* DocumentHandler.h */,
-				53E66AC418FB8FA900B6C548 /* DocumentHandler.m */,
 				534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */,
 				534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */,
 				53F41CDC18E0931F00EFEA6A /* CameraViewController.h */,
@@ -359,7 +354,6 @@
 				53F41CB818E0903400EFEA6A /* TripGoAppDelegate.m in Sources */,
 				534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */,
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
-				53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */,
 				E2DBA9AC1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m in Sources */,
 				E2BF69F6190C69440068835A /* Photo+Create.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,

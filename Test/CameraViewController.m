@@ -259,6 +259,7 @@
         {
             CaptureMomentViewController *cmvc = segue.destinationViewController;
             cmvc.photo = self.photo;
+            cmvc.managedDocument = self.managedDocument;
         }
 
     }
