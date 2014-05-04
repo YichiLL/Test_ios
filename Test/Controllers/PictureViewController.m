@@ -22,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *weatherTextField;
 @property (weak, nonatomic) IBOutlet CBAutoScrollLabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet CBAutoScrollLabel *locationLabel;
+
+
 
 
 @end
@@ -57,7 +59,7 @@
 {
     [super viewDidLoad];
     
-    self.tagLabel.text = @"This is where are the tags will be displayed, for example: #FTW #Sunny #Home";
+    self.tagLabel.text = self.photoManagedDocumentObject.tag;
     self.tagLabel.textColor = [UIColor blueColor];
     self.tagLabel.labelSpacing = 35; // distance between start and end labels
     self.tagLabel.pauseInterval = 1.7; // seconds of pause before scrolling starts again
@@ -68,11 +70,26 @@
     [self.tagLabel observeApplicationNotifications];
     self.imageView.image = self.fullScreenImage;
     //self.tagTextField.text=self.tag;
-    self.diaryView.text = self.diary;
-    self.weatherTextField.text = self.weather;
+    self.diaryView.text = self.photoManagedDocumentObject.notes;
+    self.weatherTextField.text = self.photoManagedDocumentObject.weatherDescription;
     self.scrollView.contentSize = self.imageView.bounds.size;
-    self.locationLabel.text = self.address;
-    self.dateLabel.text = self.date;
+    
+    NSString *address = self.photoManagedDocumentObject.addressFull;
+    //NSString *newReplacedString = [address stringByReplacingOccurrencesOfString:@"\\n" withString:@""];
+    NSString *newReplacedString = [address stringByReplacingOccurrencesOfString:@"\n" withString:@" "];;
+    NSLog(@"complete address: %@", newReplacedString);
+    
+    self.locationLabel.text = newReplacedString;
+    self.locationLabel.textColor = [UIColor blackColor];
+    self.locationLabel.labelSpacing = 35; // distance between start and end labels
+    self.locationLabel.pauseInterval = 1.7; // seconds of pause before scrolling starts again
+    self.locationLabel.scrollSpeed = 30; // pixels per second
+    self.locationLabel.textAlignment = NSTextAlignmentLeft; // centers text when no auto-scrolling is applied
+    self.locationLabel.fadeLength = 12.f;
+    self.locationLabel.scrollDirection = CBAutoScrollDirectionLeft;
+
+    
+//    self.dateLabel.text = self.photoManagedDocumentObject.takeDateUTC;
     [self.scrollView addGestureRecognizer:self.doubleTapGestureRecognizer];
 }
 

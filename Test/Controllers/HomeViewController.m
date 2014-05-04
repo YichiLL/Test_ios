@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSArray *photoAssets; // of ALAsset
 @property (strong, nonatomic) NSMutableArray *fixedAssets; // of ALAsset
 @property (strong, nonatomic) NSMutableArray *photosFromDatabase; // of ALAsset
-@property (strong, nonatomic) NSMutableArray *tagsFromDatabase;
+@property (strong, nonatomic) NSMutableArray *photoObjectsFromDatabase; // of Photo
 @end
 
 @implementation HomeViewController
@@ -103,13 +103,12 @@
     return _photosFromDatabase;
 }
 
-- (NSMutableArray *)tagsFromDatabase
+- (NSMutableArray *) photoObjectsFromDatabase
 {
-    if (!_tagsFromDatabase)
-    {
-        _tagsFromDatabase = [[NSMutableArray alloc] init];
-    }
-    return _tagsFromDatabase;
+    if (!_photoObjectsFromDatabase)
+        _photoObjectsFromDatabase = [[NSMutableArray alloc] init];
+    
+    return _photoObjectsFromDatabase;
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
@@ -129,8 +128,9 @@
         NSIndexPath *selectedIndexPath = [self.collectionView.indexPathsForSelectedItems objectAtIndex:0];
         //        ALAsset *photoAsset = [self.photoAssets objectAtIndex:selectedIndexPath.row];
         ALAsset *photoAsset = [self.photosFromDatabase objectAtIndex:selectedIndexPath.row];
+        
         pvc.photoAsset = photoAsset;
-        pvc.tag = [self.tagsFromDatabase objectAtIndex:selectedIndexPath.row];
+        pvc.photoManagedDocumentObject = [self.photoObjectsFromDatabase objectAtIndex:selectedIndexPath.row];
         
     } else if ([segue.identifier isEqualToString:@"Show Search Result"])
     {
@@ -229,6 +229,7 @@
 {
     if (!self.managedObjectContext) return;
     [self.photosFromDatabase removeAllObjects];
+    [self.photoObjectsFromDatabase removeAllObjects];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
     request.predicate = nil;
@@ -249,7 +250,7 @@
         for (Photo *photo in matches)
         {
             if (photo.assetURL){
-                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
+                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
             }
             //            [self analyzePhoto:photo];
         }
@@ -266,24 +267,13 @@
     return array;
 }
 
-- (void) loadPhotoWithTag:(NSString *)tag{
-    if (!tag) {tag=@"Null";}
-    [self.tagsFromDatabase addObject:tag];
-}
-
-- (void)loadPhotoWithAssetURL:(NSString *)assetURL tag:(NSString*)tag
+- (void)loadPhotoWithAssetURL:(NSString *)assetURL tag:(NSString*)tag withPhoto:(Photo *)photo
 {
     [self.assetsLibrary assetForURL:[NSURL URLWithString:assetURL]
                         resultBlock:^(ALAsset *asset) {
                             if (asset){
                                 [self.photosFromDatabase addObject:asset];
-                                
-                                if (!tag) {
-                                    [self.tagsFromDatabase addObject:@"Null"];
-                                } else {
-                                    [self.tagsFromDatabase addObject:tag];
-                                }
-                                
+                                [self.photoObjectsFromDatabase addObject:photo];
                                 //                                [self reorderAssets:self.photosFromDatabase];
                                 //                                [self analyzeAsset:asset];
                                 [self.collectionView reloadData];
@@ -384,10 +374,11 @@
     } else
     {
         [self.photosFromDatabase removeAllObjects];
+        [self.photoObjectsFromDatabase removeAllObjects];
         for (Photo *photo in matches)
         {
             if (photo.assetURL)
-                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag];
+                [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
         }
         [self.collectionView reloadData];
     }
