@@ -8,9 +8,16 @@
 
 #import "CaptureMomentViewController.h"
 
-@interface CaptureMomentViewController () <UITextViewDelegate>
+@interface CaptureMomentViewController () <UITextViewDelegate,AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property (strong,nonatomic) AVAudioRecorder *recorder;
+@property (strong,nonatomic) AVAudioPlayer *player;
+
+@property (weak, nonatomic) IBOutlet UIButton *recordPauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+
 
 @end
 
@@ -23,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addDoneToolBarToKeyboard:self.notesTextView];
+    [self setupRecordSession];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -111,15 +119,94 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Recording
+- (void) setupRecordSession{
+    // Disable Stop/Play button when application launches
+    [self.stopButton setEnabled:NO];
+    [self.playButton setEnabled:NO];
+    
+    // Set the audio file
+    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],@"NewAudio.m4a", nil];
+    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    // Setup audio session
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    // Define the recorder setting
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+    
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+    
+    // Initiate and prepare the recorder
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:nil];
+    self.recorder.delegate = self;
+    self.recorder.meteringEnabled = YES;
+    [self.recorder prepareToRecord];
+    
 }
-*/
+- (IBAction)recordPauseTapped:(id)sender {
+    // Stop the audio player before recording
+    if (self.player.playing) {
+        [self.player stop];
+    }
+    
+    if (!self.recorder.recording) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        
+        // Start recording
+        [self.recorder record];
+        [self.recordPauseButton setTitle:@"| |" forState:UIControlStateNormal];
+        
+    } else {
+        
+        // Pause recording
+        [self.recorder pause];
+        [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    
+    [self.stopButton setEnabled:YES];
+    [self.playButton setEnabled:NO];
+    
+}
+- (IBAction)stopTapped:(id)sender {
+    [self.recorder stop];
+    
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:NO error:nil];
+}
+- (IBAction)playTapped:(id)sender {
+    if (!self.recorder.recording){
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
+        [self.player setDelegate:self];
+        [self.player play];
+    }
+}
+- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
+    [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
+    [self.stopButton setEnabled:NO];
+    [self.playButton setEnabled:YES];
+}
+
+#pragma mark - AVAudioPlayerDelegate
+
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    // do saving here
+}
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

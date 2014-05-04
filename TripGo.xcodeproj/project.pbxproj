@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530386531916DA3B00EC3491 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530386521916DA3B00EC3491 /* AVFoundation.framework */; };
 		530E3A3919057672006193E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E3A3819057672006193E4 /* HomeViewController.m */; };
 		530E3A3E19057F1E006193E4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */; };
 		530E3A411905851A006193E4 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E3A401905851A006193E4 /* PictureViewController.m */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		530386521916DA3B00EC3491 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		530E3A3719057672006193E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Test/Controllers/HomeViewController.h; sourceTree = "<group>"; };
 		530E3A3819057672006193E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Test/Controllers/HomeViewController.m; sourceTree = "<group>"; };
 		530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530386531916DA3B00EC3491 /* AVFoundation.framework in Frameworks */,
 				E2DBA99C1911A539009BCB85 /* CoreLocation.framework in Frameworks */,
 				E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */,
 				530E3A3E19057F1E006193E4 /* AssetsLibrary.framework in Frameworks */,
@@ -184,6 +187,7 @@
 		53F41CA618E0903400EFEA6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				530386521916DA3B00EC3491 /* AVFoundation.framework */,
 				E2DBA99B1911A539009BCB85 /* CoreLocation.framework */,
 				E2BF69FA190C7CB90068835A /* CoreData.framework */,
 				530E3A3D19057F1E006193E4 /* AssetsLibrary.framework */,

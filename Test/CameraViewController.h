@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

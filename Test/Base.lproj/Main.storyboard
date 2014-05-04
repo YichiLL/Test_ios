@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZkX-Tw-64u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZkX-Tw-64u">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -179,6 +179,9 @@
                                 <state key="normal" backgroundImage="record_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordPauseTapped:" destination="s0M-5o-BTF" eventType="touchUpInside" id="BuI-gy-bCO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ry-JF-U53">
                                 <rect key="frame" x="65" y="237" width="30" height="30"/>
@@ -186,6 +189,9 @@
                                 <state key="normal" backgroundImage="stop_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopTapped:" destination="s0M-5o-BTF" eventType="touchUpInside" id="JlB-5K-gSz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-T5-U6k">
                                 <rect key="frame" x="223" y="237" width="30" height="30"/>
@@ -193,6 +199,9 @@
                                 <state key="normal" backgroundImage="play_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playTapped:" destination="s0M-5o-BTF" eventType="touchUpInside" id="KYg-Ug-1ah"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gray_dot" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-7d-WlC">
                                 <rect key="frame" x="20" y="40" width="280" height="1"/>
@@ -226,6 +235,9 @@
                     <navigationItem key="navigationItem" id="2bZ-Z4-gU2"/>
                     <connections>
                         <outlet property="notesTextView" destination="SuP-fW-ez5" id="HPL-F7-2sc"/>
+                        <outlet property="playButton" destination="LaK-T5-U6k" id="sZS-TT-afb"/>
+                        <outlet property="recordPauseButton" destination="Nxj-OF-Rq8" id="WHN-ph-A8V"/>
+                        <outlet property="stopButton" destination="1Ry-JF-U53" id="FND-mm-5Qw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLH-WP-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
