@@ -18,11 +18,11 @@
 @property (strong, nonatomic) UIImage *fullScreenImage;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
 //@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
-@property (weak, nonatomic) IBOutlet UILabel *diaryView;
 @property (weak, nonatomic) IBOutlet UITextField *weatherTextField;
 @property (weak, nonatomic) IBOutlet CBAutoScrollLabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet CBAutoScrollLabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UITextView *diaryLabel;
 
 
 
@@ -70,7 +70,8 @@
     [self.tagLabel observeApplicationNotifications];
     self.imageView.image = self.fullScreenImage;
     //self.tagTextField.text=self.tag;
-    self.diaryView.text = self.photoManagedDocumentObject.notes;
+    self.diaryLabel.editable = false;
+    self.diaryLabel.text = self.photoManagedDocumentObject.notes;
     self.weatherTextField.text = self.photoManagedDocumentObject.weatherDescription;
     self.scrollView.contentSize = self.imageView.bounds.size;
     
