@@ -8,14 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/ALAsset.h>
+#import "Photo.h"
 
 @interface PictureViewController : UIViewController
 
 @property (strong, nonatomic) ALAsset *photoAsset;
-@property (strong, nonatomic) NSString *tag;
-@property (strong, nonatomic) NSString *diary;
-@property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *date;
-@property (strong, nonatomic) NSString *weather;
+@property (strong, nonatomic) Photo *photoManagedDocumentObject;
 
 @end

@@ -280,7 +280,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="wMi-A5-V0m">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="wMi-A5-V0m" customClass="PictureCell">
                                         <rect key="frame" x="0.0" y="50" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -385,12 +385,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="locationLabel" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-R9-q5y">
-                                <rect key="frame" x="155" y="20" width="160" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="eLQ-BI-QVY">
                                 <rect key="frame" x="-2" y="54" width="320" height="284"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,16 +411,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="diaryText" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="lOj-EX-0sH">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="diaryText" text="" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="lOj-EX-0sH">
                                 <rect key="frame" x="0.0" y="375" width="320" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                <string key="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-ht-YVu" customClass="CBAutoScrollLabel">
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Tags" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-ht-YVu" customClass="CBAutoScrollLabel">
                                 <rect key="frame" x="54" y="468" width="251" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.070000000000000007" colorSpace="calibratedRGB"/>
@@ -437,6 +429,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Address" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-c8-PUP" customClass="CBAutoScrollLabel">
+                                <rect key="frame" x="154" y="20" width="160" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -446,7 +442,7 @@
                         <outlet property="dateLabel" destination="ytx-Ht-bcH" id="byL-hE-X5R"/>
                         <outlet property="diaryView" destination="lOj-EX-0sH" id="uDP-SY-kKR"/>
                         <outlet property="imageView" destination="Uqt-P8-YPV" id="kRt-ZE-amP"/>
-                        <outlet property="locationLabel" destination="NCq-R9-q5y" id="XRA-qD-Phh"/>
+                        <outlet property="locationLabel" destination="h5b-c8-PUP" id="sNp-xg-cLH"/>
                         <outlet property="scrollView" destination="eLQ-BI-QVY" id="xDE-kb-pNl"/>
                         <outlet property="tagLabel" destination="nGJ-ht-YVu" id="zOH-BN-zi5"/>
                         <outlet property="weatherTextField" destination="IdI-W5-Aw5" id="dXy-jf-cHl"/>

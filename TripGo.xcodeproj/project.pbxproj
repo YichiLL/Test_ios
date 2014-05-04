@@ -29,6 +29,7 @@
 		53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* CameraViewController.m */; };
 		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
+		A960E8BB1916D54400CF993A /* PictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A960E8BA1916D54400CF993A /* PictureCell.m */; };
 		A96F04F819160FD100A4C566 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */; };
 		E22046E21914776D00B8D7A2 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E22046E11914776D00B8D7A2 /* Photo.m */; };
 		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
@@ -80,6 +81,8 @@
 		53F41CDD18E0931F00EFEA6A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController.m; path = Test/CameraViewController.m; sourceTree = "<group>"; };
 		53F41CDF18E0955C00EFEA6A /* cameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraView.xib; sourceTree = "<group>"; };
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
+		A960E8B91916D54400CF993A /* PictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCell.h; sourceTree = "<group>"; };
+		A960E8BA1916D54400CF993A /* PictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCell.m; sourceTree = "<group>"; };
 		A96F04F619160FD100A4C566 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		E22046E01914776D00B8D7A2 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 		A960E8AF1916CBAE00CF993A /* layout */ = {
 			isa = PBXGroup;
 			children = (
+				A960E8B91916D54400CF993A /* PictureCell.h */,
+				A960E8BA1916D54400CF993A /* PictureCell.m */,
 			);
 			name = layout;
 			path = ..;
@@ -380,6 +385,7 @@
 				53E66AC518FB8FA900B6C548 /* DocumentHandler.m in Sources */,
 				E2DBA9AC1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m in Sources */,
 				E2BF69F6190C69440068835A /* Photo+Create.m in Sources */,
+				A960E8BB1916D54400CF993A /* PictureCell.m in Sources */,
 				A96F04F819160FD100A4C566 /* CBAutoScrollLabel.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,
 				E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */,
