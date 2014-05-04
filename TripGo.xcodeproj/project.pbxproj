@@ -29,6 +29,7 @@
 		53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F41CDD18E0931F00EFEA6A /* CameraViewController.m */; };
 		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
+		A96F04F819160FD100A4C566 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */; };
 		E22046E21914776D00B8D7A2 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E22046E11914776D00B8D7A2 /* Photo.m */; };
 		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
 		E2BF69F6190C69440068835A /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F5190C69440068835A /* Photo+Create.m */; };
@@ -78,6 +79,8 @@
 		53F41CDD18E0931F00EFEA6A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController.m; path = Test/CameraViewController.m; sourceTree = "<group>"; };
 		53F41CDF18E0955C00EFEA6A /* cameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraView.xib; sourceTree = "<group>"; };
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
+		A96F04F619160FD100A4C566 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
+		A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		E22046E01914776D00B8D7A2 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
 		E22046E11914776D00B8D7A2 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = CoreData/Photo.m; sourceTree = "<group>"; };
 		E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPictureViewController.h; path = Test/Controllers/SearchPictureViewController.h; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				533E2B2618E0C49D003A2860 /* Images.xcassets */,
+				A96F04F91916155800A4C566 /* CBAutoScrollLabel */,
 				53F41CAD18E0903400EFEA6A /* Test */,
 				53F41CCC18E0903400EFEA6A /* TestTests */,
 				53F41CA618E0903400EFEA6A /* Frameworks */,
@@ -197,6 +201,7 @@
 		53F41CAD18E0903400EFEA6A /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A960E8AF1916CBAE00CF993A /* layout */,
 				53F41CB618E0903400EFEA6A /* TripGoAppDelegate.h */,
 				53F41CB718E0903400EFEA6A /* TripGoAppDelegate.m */,
 				530E3A3C19057706006193E4 /* Views */,
@@ -236,6 +241,23 @@
 				53F41CCF18E0903400EFEA6A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A960E8AF1916CBAE00CF993A /* layout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = layout;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A96F04F91916155800A4C566 /* CBAutoScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A96F04F619160FD100A4C566 /* CBAutoScrollLabel.h */,
+				A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */,
+			);
+			name = CBAutoScrollLabel;
 			sourceTree = "<group>";
 		};
 		E2DBA9A91911C414009BCB85 /* Utility */ = {
@@ -356,6 +378,7 @@
 				53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */,
 				E2DBA9AC1911C489009BCB85 /* NSMutableDictionary+LocationMetadata.m in Sources */,
 				E2BF69F6190C69440068835A /* Photo+Create.m in Sources */,
+				A96F04F819160FD100A4C566 /* CBAutoScrollLabel.m in Sources */,
 				530E3A411905851A006193E4 /* PictureViewController.m in Sources */,
 				E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */,
 			);
