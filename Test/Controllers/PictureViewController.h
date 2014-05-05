@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/ALAsset.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Photo.h"
 
 @interface PictureViewController : UIViewController

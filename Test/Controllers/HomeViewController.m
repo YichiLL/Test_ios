@@ -14,7 +14,7 @@
 #import "PictureViewController.h"
 #import "SearchPictureViewController.h"
 
-@interface HomeViewController () <UISearchBarDelegate>
+@interface HomeViewController () <UISearchBarDelegate,AVAudioPlayerDelegate>
 
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) NSArray *photoAssets; // of ALAsset

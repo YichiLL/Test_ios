@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet CBAutoScrollLabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UITextView *diaryLabel;
+@property (strong,nonatomic) AVAudioPlayer *player;
 
 
 
@@ -202,5 +203,16 @@
     
     self.imageView.frame = imageViewFrame;
 }
+
+# pragma mark - Play audio memo
+- (IBAction)playStopAudio:(id)sender {
+    if (!self.player.playing){
+         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:self.photoManagedDocumentObject.audioURL] error:nil];
+        [self.player setDelegate:self];
+        [self.player play];
+    }
+    else {[self.player stop];}
+}
+
 
 @end

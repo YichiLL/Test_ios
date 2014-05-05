@@ -161,6 +161,7 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     [self.recorder prepareToRecord];
     
 }
+
 - (IBAction)recordPauseTapped:(id)sender {
     // Stop the audio player before recording
     if (self.player.playing) {
@@ -173,13 +174,18 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
         
         // Start recording
         [self.recorder record];
-        [self.recordPauseButton setTitle:@"| |" forState:UIControlStateNormal];
+//        [self.recordPauseButton setTitle:@"| |" forState:UIControlStateNormal];
+//        [self.recordPauseButton setImage:[UIImage imageNamed:@"pause_button"] forState:UIControlStateNormal];
+        self.recordPauseButton.selected=true;
         
     } else {
         
         // Pause recording
         [self.recorder pause];
-        [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
+//        [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
+//        [self.recordPauseButton setImage:[UIImage imageNamed:@"record_icon@2x"] forState:UIControlStateNormal];
+        self.recordPauseButton.selected=false;
+
     }
     
     [self.stopButton setEnabled:YES];
@@ -187,6 +193,7 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     
 }
 - (IBAction)stopTapped:(id)sender {
+    self.recordPauseButton.selected=false;
     [self.recorder stop];
     self.photo.audioURL = [self.audioFileURL absoluteString];
     NSLog(@"%@",self.photo.audioURL);
