@@ -256,9 +256,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsw-2R-ZLf">
-                                <rect key="frame" x="48" y="32" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsw-2R-ZLf">
+                                <rect key="frame" x="45" y="28" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FUe-aF-qvp"/>
+                                    <constraint firstAttribute="height" constant="50" id="OHX-oI-Cli"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="icon_camera">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,15 +271,23 @@
                                     <segue destination="dx8-Ox-Hba" kind="push" identifier="Take Picture" id="4A9-re-REj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9N-Hf-Z5j">
-                                <rect key="frame" x="137" y="32" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9N-Hf-Z5j">
+                                <rect key="frame" x="135" y="28" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5Ht-jP-LkE"/>
+                                    <constraint firstAttribute="height" constant="50" id="ydl-lb-A47"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="icon_video"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-4L-XWP">
-                                <rect key="frame" x="222" y="32" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-4L-XWP">
+                                <rect key="frame" x="220" y="28" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="GB2-ch-9Dt"/>
+                                    <constraint firstAttribute="height" constant="50" id="qCU-vZ-00R"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="icon_microphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -284,8 +296,8 @@
                                     <segue destination="s0M-5o-BTF" kind="push" identifier="Record Audio Memo" id="Uum-nw-pvK"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bzS-5O-g5a">
-                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bzS-5O-g5a">
+                                <rect key="frame" x="0.0" y="86" width="320" height="482"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="2" id="rUc-J2-ewp">
@@ -313,7 +325,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" text="" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7q-mG-8hq">
+                                        <searchBar contentMode="redraw" text="" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7q-mG-8hq">
                                             <rect key="frame" x="0.0" y="3" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -322,10 +334,29 @@
                                             </connections>
                                         </searchBar>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="w7q-mG-8hq" secondAttribute="trailing" id="H8c-zd-kuc"/>
+                                        <constraint firstItem="w7q-mG-8hq" firstAttribute="leading" secondItem="Et4-zD-IqF" secondAttribute="leading" id="IMw-Vm-5A3"/>
+                                        <constraint firstItem="w7q-mG-8hq" firstAttribute="centerY" secondItem="Et4-zD-IqF" secondAttribute="centerY" id="KMw-Jy-J9p"/>
+                                    </constraints>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960791349411011" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="bzS-5O-g5a" firstAttribute="leading" secondItem="2GJ-Jl-tjh" secondAttribute="leading" id="2ne-6F-N9Y"/>
+                            <constraint firstAttribute="trailing" secondItem="bzS-5O-g5a" secondAttribute="trailing" id="32R-YC-Cky"/>
+                            <constraint firstItem="bzS-5O-g5a" firstAttribute="top" secondItem="L9N-Hf-Z5j" secondAttribute="bottom" constant="8" symbolic="YES" id="DhV-ye-UQC"/>
+                            <constraint firstItem="Wsw-2R-ZLf" firstAttribute="top" secondItem="1Xw-k9-6hZ" secondAttribute="bottom" constant="20" symbolic="YES" id="Gyo-Q9-lpU"/>
+                            <constraint firstAttribute="bottom" secondItem="bzS-5O-g5a" secondAttribute="bottom" id="Nro-ER-sNA"/>
+                            <constraint firstItem="bzS-5O-g5a" firstAttribute="top" secondItem="Wsw-2R-ZLf" secondAttribute="bottom" constant="8" symbolic="YES" id="aUC-ez-rbB"/>
+                            <constraint firstAttribute="centerX" secondItem="L9N-Hf-Z5j" secondAttribute="centerX" id="cis-w3-LEo"/>
+                            <constraint firstItem="L9N-Hf-Z5j" firstAttribute="top" secondItem="tBn-4L-XWP" secondAttribute="top" id="ctv-Q9-T3y"/>
+                            <constraint firstItem="tBn-4L-XWP" firstAttribute="leading" secondItem="L9N-Hf-Z5j" secondAttribute="trailing" constant="35" id="hSe-x1-KWy"/>
+                            <constraint firstItem="bzS-5O-g5a" firstAttribute="top" secondItem="tBn-4L-XWP" secondAttribute="bottom" constant="8" symbolic="YES" id="kjf-86-EeH"/>
+                            <constraint firstItem="L9N-Hf-Z5j" firstAttribute="top" secondItem="Wsw-2R-ZLf" secondAttribute="top" id="ogm-Hc-Vk8"/>
+                            <constraint firstItem="L9N-Hf-Z5j" firstAttribute="leading" secondItem="Wsw-2R-ZLf" secondAttribute="trailing" constant="40" id="sqp-xq-WnQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yZM-5Y-9pg"/>
                     <connections>
