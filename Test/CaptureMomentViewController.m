@@ -75,12 +75,13 @@
 }
 
 #pragma mark - Reading tags
-
-- (IBAction)happyButtonPressed:(id)sender {
-    self.photo.tag=@"Happy";
-}
-- (IBAction)funButtonPressed:(id)sender {
-    self.photo.tag=@"Fun";
+- (IBAction)tagButtonPressed:(id)sender {
+    UIButton *tagButton = (UIButton*)sender;
+    if (!self.photo.tag){
+        self.photo.tag=[NSString stringWithFormat:@"#%@",tagButton.titleLabel.text];}
+    else {
+        self.photo.tag = [NSString stringWithFormat:@"%@ #%@", self.photo.tag, tagButton.titleLabel.text];}
+    tagButton.enabled=false;
 }
 
 #pragma mark - Going back actions
@@ -137,10 +138,10 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],[NSString stringWithFormat:@"%@%@", dateString, @".m4a"], nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     // FAILED trying to save to managed document
-//    NSURL *outputFileURL = [self.managedDocument.fileURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]];
-//    NSLog(@"document url %@",self.managedDocument.fileURL );
-//    NSLog(@"Appending %@",[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]);
-//    NSLog(@"fileURL is %@",outputFileURL);
+    //    NSURL *outputFileURL = [self.managedDocument.fileURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]];
+    //    NSLog(@"document url %@",self.managedDocument.fileURL );
+    //    NSLog(@"Appending %@",[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]);
+    //    NSLog(@"fileURL is %@",outputFileURL);
     self.audioFileURL = outputFileURL;
     
     // Setup audio session
@@ -174,18 +175,14 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
         
         // Start recording
         [self.recorder record];
-//        [self.recordPauseButton setTitle:@"| |" forState:UIControlStateNormal];
-//        [self.recordPauseButton setImage:[UIImage imageNamed:@"pause_button"] forState:UIControlStateNormal];
         self.recordPauseButton.selected=true;
         
     } else {
         
         // Pause recording
         [self.recorder pause];
-//        [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
-//        [self.recordPauseButton setImage:[UIImage imageNamed:@"record_icon@2x"] forState:UIControlStateNormal];
         self.recordPauseButton.selected=false;
-
+        
     }
     
     [self.stopButton setEnabled:YES];
@@ -195,8 +192,6 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
 - (IBAction)stopTapped:(id)sender {
     self.recordPauseButton.selected=false;
     [self.recorder stop];
-    self.photo.audioURL = [self.audioFileURL absoluteString];
-    NSLog(@"%@",self.photo.audioURL);
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];
 }
@@ -204,12 +199,12 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     if (!self.recorder.recording){
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
         [self.player setDelegate:self];
-        
         [self.player play];
     }
 }
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
-    [self.recordPauseButton setTitle:@"" forState:UIControlStateNormal];
+    self.photo.audioURL = [self.audioFileURL absoluteString];
+    self.recordPauseButton.selected=false;
     [self.stopButton setEnabled:NO];
     [self.playButton setEnabled:YES];
 }
