@@ -75,10 +75,17 @@
     self.weatherTextField.text = self.photoManagedDocumentObject.weatherDescription;
     self.scrollView.contentSize = self.imageView.bounds.size;
     
+    NSDate *myDate = self.photoManagedDocumentObject.takeDateUTC;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    //[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *myDateString = [dateFormatter stringFromDate:myDate];
+    NSLog(@"%@", myDateString);
+    self.dateLabel.text = myDateString;
+    
     NSString *address = self.photoManagedDocumentObject.addressFull;
     //NSString *newReplacedString = [address stringByReplacingOccurrencesOfString:@"\\n" withString:@""];
     NSString *newReplacedString = [address stringByReplacingOccurrencesOfString:@"\n" withString:@" "];;
-    NSLog(@"complete address: %@", newReplacedString);
     
     self.locationLabel.text = newReplacedString;
     self.locationLabel.textColor = [UIColor blackColor];
