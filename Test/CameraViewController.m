@@ -201,7 +201,7 @@
 
     // Show button to capture more details about current picture
     self.captureMomentButton.hidden=NO;
-    self.oldTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
+    self.oldTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hideWithAnimation) userInfo:nil repeats:NO];
 }
 
 - (void)hideWithAnimation {

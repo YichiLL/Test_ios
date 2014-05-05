@@ -148,6 +148,9 @@
         CameraViewController *cvc = segue.destinationViewController;
         cvc.managedDocument = self.managedDocument;
         cvc.managedObjectContext = self.managedObjectContext;
+    } else if ([segue.identifier isEqualToString:@"Record Audio Memo"])
+    {
+        //TODO
     }
 }
 
@@ -252,7 +255,7 @@
             if (photo.assetURL){
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
             }
-            //            [self analyzePhoto:photo];
+//            [self analyzePhoto:photo];
         }
     }
 }
@@ -283,6 +286,9 @@
                         }];
 }
 
+/*
+ * Debugging purpose. Print out critical information into NSLog from an ALAsset
+ */
 - (void)analyzeAsset:(ALAsset *)asset
 {
     NSArray *assetKeys = @[
@@ -320,6 +326,9 @@
     NSLog(@"END Below is asset properties");
 }
 
+/*
+ * Debugging purpose. Print out critical information from a photo object
+ */
 - (void)analyzePhoto:(Photo *)photo
 {
     NSLog(@"Photo = %@", photo);
@@ -349,21 +358,26 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableView = nil;
-    
+
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
         static NSString *cellIdentifier = @"Header with Search";
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     }
-    
+
     return reusableView;
-    
+
 }
 
 - (void)executeSearchWithText:(NSString *)text
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
-    request.predicate = [NSPredicate predicateWithFormat:@"(tag CONTAINS[cd] %@) OR (weather CONTAINS[cd] %@)", text, text];
+    request.predicate = [NSPredicate predicateWithFormat:@"(tag CONTAINS[cd] %@) OR (weatherDescription CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@) OR (addressFull CONTAINS[cd] %@) OR (addressRegions CONTAINS[cd] %@)", text, text, text, text, text];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"takeDateUTC"
+                                                              ascending:NO],
+                                [NSSortDescriptor sortDescriptorWithKey:@"assetURL"
+                                                              ascending:YES
+                                                               selector:@selector(localizedStandardCompare:)]];
     
     NSError *error;
     NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
@@ -379,6 +393,7 @@
         {
             if (photo.assetURL)
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
+//            [self analyzePhoto:photo];
         }
         [self.collectionView reloadData];
     }
