@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (strong,nonatomic) AVAudioRecorder *recorder;
 @property (strong,nonatomic) AVAudioPlayer *player;
+@property (weak,nonatomic) NSURL *audioFileURL;
 
 @property (weak, nonatomic) IBOutlet UIButton *recordPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
@@ -125,9 +126,22 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
     [self.stopButton setEnabled:NO];
     [self.playButton setEnabled:NO];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-mm-dd-HH-mm-ss"];
+    NSDate *todaysDate;
+    todaysDate = [NSDate date];
+    NSString *dateString =[formatter stringFromDate:self.photo.takeDateUTC];
+    
+    
     // Set the audio file
-    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],@"NewAudio.m4a", nil];
+    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],[NSString stringWithFormat:@"%@%@", dateString, @".m4a"], nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    // FAILED trying to save to managed document
+//    NSURL *outputFileURL = [self.managedDocument.fileURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]];
+//    NSLog(@"document url %@",self.managedDocument.fileURL );
+//    NSLog(@"Appending %@",[NSString stringWithFormat:@"%@%@", dateString, @".m4a"]);
+//    NSLog(@"fileURL is %@",outputFileURL);
+    self.audioFileURL = outputFileURL;
     
     // Setup audio session
     AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -174,7 +188,8 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
 }
 - (IBAction)stopTapped:(id)sender {
     [self.recorder stop];
-    
+    self.photo.audioURL = [self.audioFileURL absoluteString];
+    NSLog(@"%@",self.photo.audioURL);
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];
 }
@@ -195,7 +210,7 @@ static NSString *NOTE_HELP_TEXT = @"Write down how you are feeling, #create_a_ta
 #pragma mark - AVAudioPlayerDelegate
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    // do saving here
+    // additional function after playing ends
 }
 
 

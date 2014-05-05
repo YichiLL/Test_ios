@@ -14,6 +14,7 @@
 		533E2B2718E0C49D003A2860 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2618E0C49D003A2860 /* Images.xcassets */; };
 		533E2B2A18E0CA60003A2860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533E2B2818E0CA60003A2860 /* Main.storyboard */; };
 		534968CE18EA1E6B009010C1 /* CaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */; };
+		5350784B19180FA300FACA74 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5350784A19180FA300FACA74 /* Photo.m */; };
 		53BBE39F18F843FA008B794E /* PhotoMetadata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */; };
 		53F41CA818E0903400EFEA6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA718E0903400EFEA6A /* Foundation.framework */; };
 		53F41CAA18E0903400EFEA6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F41CA918E0903400EFEA6A /* CoreGraphics.framework */; };
@@ -30,7 +31,6 @@
 		53F41CE018E0955C00EFEA6A /* cameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CDF18E0955C00EFEA6A /* cameraView.xib */; };
 		53F41CF318E0AF3D00EFEA6A /* IMG_9623.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */; };
 		A96F04F819160FD100A4C566 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */; };
-		E22046E21914776D00B8D7A2 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E22046E11914776D00B8D7A2 /* Photo.m */; };
 		E245A7F5190B4C5500D76B60 /* SearchPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */; };
 		E2BF69F6190C69440068835A /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BF69F5190C69440068835A /* Photo+Create.m */; };
 		E2BF69FB190C7CB90068835A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BF69FA190C7CB90068835A /* CoreData.framework */; };
@@ -59,6 +59,8 @@
 		533E2B2918E0CA60003A2860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Test/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		534968CC18EA1E6B009010C1 /* CaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureMomentViewController.h; path = Test/CaptureMomentViewController.h; sourceTree = "<group>"; };
 		534968CD18EA1E6B009010C1 /* CaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentViewController.m; path = Test/CaptureMomentViewController.m; sourceTree = "<group>"; };
+		5350784919180FA300FACA74 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
+		5350784A19180FA300FACA74 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = CoreData/Photo.m; sourceTree = "<group>"; };
 		53BBE39E18F843FA008B794E /* PhotoMetadata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoMetadata.xcdatamodel; sourceTree = "<group>"; };
 		53F41CA418E0903400EFEA6A /* TripGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F41CA718E0903400EFEA6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,8 +83,6 @@
 		53F41CF218E0AF3D00EFEA6A /* IMG_9623.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_9623.png; sourceTree = "<group>"; };
 		A96F04F619160FD100A4C566 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		A96F04F719160FD100A4C566 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
-		E22046E01914776D00B8D7A2 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = CoreData/Photo.h; sourceTree = "<group>"; };
-		E22046E11914776D00B8D7A2 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = CoreData/Photo.m; sourceTree = "<group>"; };
 		E245A7F3190B4C5400D76B60 /* SearchPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchPictureViewController.h; path = Test/Controllers/SearchPictureViewController.h; sourceTree = "<group>"; };
 		E245A7F4190B4C5500D76B60 /* SearchPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchPictureViewController.m; path = Test/Controllers/SearchPictureViewController.m; sourceTree = "<group>"; };
 		E2BF69F4190C69440068835A /* Photo+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+Create.h"; path = "CoreData/Photo+Create.h"; sourceTree = "<group>"; };
@@ -143,9 +143,9 @@
 		530E3A3B190576F2006193E4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E22046E01914776D00B8D7A2 /* Photo.h */,
-				E22046E11914776D00B8D7A2 /* Photo.m */,
 				E2BF69FD190C88C20068835A /* DatabaseAvailability.h */,
+				5350784919180FA300FACA74 /* Photo.h */,
+				5350784A19180FA300FACA74 /* Photo.m */,
 				53BBE39D18F843FA008B794E /* PhotoMetadata.xcdatamodeld */,
 				E2BF69F4190C69440068835A /* Photo+Create.h */,
 				E2BF69F5190C69440068835A /* Photo+Create.m */,
@@ -360,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E22046E21914776D00B8D7A2 /* Photo.m in Sources */,
+				5350784B19180FA300FACA74 /* Photo.m in Sources */,
 				530E3A3919057672006193E4 /* HomeViewController.m in Sources */,
 				53F41CB418E0903400EFEA6A /* main.m in Sources */,
 				53F41CDE18E0931F00EFEA6A /* CameraViewController.m in Sources */,

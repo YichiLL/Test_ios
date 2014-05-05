@@ -2,7 +2,7 @@
 //  Photo.h
 //  TripGo
 //
-//  Created by Tom Hsu on 5/2/14.
+//  Created by Y. Liu on 5/5/14.
 //  Copyright (c) 2014 Y. Liu. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber * gpsLongitude;
 @property (nonatomic, retain) NSNumber * gpsSpeed;
 @property (nonatomic, retain) NSDate * locationTimeStamp;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSString * tag;
 @property (nonatomic, retain) NSDate * takeDateUTC;
 @property (nonatomic, retain) NSString * takeTimeZone;
@@ -33,6 +34,6 @@
 @property (nonatomic, retain) NSNumber * weatherLongitude;
 @property (nonatomic, retain) NSNumber * weatherTemperature;
 @property (nonatomic, retain) NSNumber * weatherWindSpeed;
-@property (nonatomic, retain) NSString * notes;
+@property (nonatomic, retain) NSString * audioURL;
 
 @end
