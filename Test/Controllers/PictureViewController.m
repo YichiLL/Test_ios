@@ -10,14 +10,12 @@
 #import "CBAutoScrollLabel.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
-@interface PictureViewController ()
+@interface PictureViewController () <AVAudioPlayerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) UIImage *fullScreenImage;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
-//@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UITextField *weatherTextField;
 @property (weak, nonatomic) IBOutlet CBAutoScrollLabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -81,7 +79,7 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     //[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     NSString *myDateString = [dateFormatter stringFromDate:myDate];
-    NSLog(@"%@", myDateString);
+//    NSLog(@"%@", myDateString);
     self.dateLabel.text = myDateString;
     
     NSString *address = self.photoManagedDocumentObject.addressFull;
@@ -206,7 +204,7 @@
 
 # pragma mark - Play audio memo
 - (IBAction)playStopAudio:(id)sender {
-    if (!self.player.playing){
+    if (!self.player.playing) {
          self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:self.photoManagedDocumentObject.audioURL] error:nil];
         [self.player setDelegate:self];
         [self.player play];

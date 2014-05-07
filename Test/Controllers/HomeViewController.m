@@ -58,7 +58,6 @@
     //                                                 name:NSManagedObjectContextObjectsDidChangeNotification
     //                                               object:self.managedObjectContext];
     //    [self loadPhotos];
-    //    [self initFixedPicture];
     [self initPhotoFromDatabase];
 }
 
@@ -114,7 +113,6 @@
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     _managedObjectContext = managedObjectContext;
-    //    [self initFixedPicture];
     [self initPhotoFromDatabase];
 }
 
@@ -213,21 +211,6 @@
     }];
 }
 
-/*
- Asset URL is: assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF455264&ext=JPG
- */
-- (void) initFixedPicture
-{
-    [self.fixedAssets removeAllObjects];
-    NSURL *fixedURL = [NSURL URLWithString:@"assets-library://asset/asset.JPG?id=70EC4E7C-F648-4862-B143-AF04AF455264&ext=JPG"];
-    [self.assetsLibrary assetForURL:fixedURL resultBlock:^(ALAsset *asset) {
-        [self.fixedAssets addObject:asset];
-        [self.collectionView reloadData];
-    } failureBlock:^(NSError *error) {
-        NSLog(@"Error finding the picture");
-    }];
-}
-
 - (void) initPhotoFromDatabase
 {
     if (!self.managedObjectContext) return;
@@ -252,9 +235,8 @@
     {
         for (Photo *photo in matches)
         {
-            if (photo.assetURL){
+            if (photo.assetURL)
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
-            }
 //            [self analyzePhoto:photo];
         }
     }
@@ -395,7 +377,7 @@
                 [self loadPhotoWithAssetURL:photo.assetURL tag:photo.tag withPhoto:photo];
 //            [self analyzePhoto:photo];
         }
-        [self.collectionView reloadData];
+//        [self.collectionView reloadData];
     }
     
 }

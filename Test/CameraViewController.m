@@ -226,10 +226,10 @@
 # pragma mark - Saving Document
 - (void)saveDocument
 {
-    NSLog(@"Saving Called");
+    NSLog(@"Saving Document Called");
     [self.managedDocument saveToURL:self.managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
         if (success) {
-            NSLog(@"After saving");
+            NSLog(@"After saving document");
         }
         else NSLog(@"Failed to Save.");
     }];
